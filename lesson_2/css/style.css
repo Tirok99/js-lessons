@@ -13,22 +13,23 @@ body{
 
 .page {
 	background: url(/img/city.jpg);
-}
-.page__main {}
-.main {
 	padding-top: 40px;
 	padding-bottom: 40px;
 }
-.main__container {
+.page__main {}
+.main {
+	
+}
+.page__container {
 	background-color: #dadada;
 	border-radius: 10px;
 	opacity: 0.85;
 }
-.main__title{
+.page__title{
 	padding-top: 35px;
 	text-align: center;
 }
-.task-block {}
+.page__block {}
 .block-task {}
 .block-task__list {
 	margin: 0 auto;
