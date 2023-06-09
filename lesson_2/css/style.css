@@ -12,11 +12,8 @@ body{
 }
 
 .page {
-	background: url(/img/city.jpg);
-	padding-top: 40px;
-	padding-bottom: 40px;
+	
 }
-.page__main {}
 .main {
 	
 }
@@ -24,6 +21,9 @@ body{
 	background-color: #dadada;
 	border-radius: 10px;
 	opacity: 0.85;
+	background: url(/img/city.jpg);
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 .page__title{
 	padding-top: 35px;
