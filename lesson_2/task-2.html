@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		let birthdayYear = parseFloat(prompt('Введіть рік народження', ''))
+		const CURRENT_YEAR = 2023
+		//2. Обчислення
+		// Знаходимо кільксть років у 2023
+		let numberYears = CURRENT_YEAR - birthdayYear
+		//3. Вивод рузультатів
+		document.write(`Ваші результати: <br>
+   	 	1) Кількість років = ${numberYears}`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-0</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		// Створюємо ззінну для невідомої а
+		let a = parseFloat(prompt('Введіть число', '0'))
+		// Створюємо ззінну для невідомої b
+		let b = parseFloat(prompt('Введіть число', '0'))
+		// Створюємо ззінну для невідомої c
+		let c = parseFloat(prompt('Введіть число', '0'))
+
+		//2. Обчислення
+		let s1 = a + 12 + b
+		let s2 = Math.sqrt((a + b) / (2 * a))
+		let s3 = Math.cbrt((a + b) * c)
+		let s4 = Math.sin(a / -b)
+
+		//3. Вивод рузультатів
+		document.write(`Ваші результати: <br>
+   	 	1) s1 = ${s1} <br> 
+    		2) s2 = ${s2} <br>
+   		3) s3 = ${s3} <br>
+    		4) s4 = ${s4}
+   	 `)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

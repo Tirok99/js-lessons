@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-6</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		let productOnePrice = parseFloat(prompt('Введіть вартість товару "One"', ''))
+		let productOneNumber = parseInt(prompt('Введіть кількість', '1'))
+		let productSecondPrice = parseFloat(prompt('Введіть вартість товару "Second"', ''))
+		let productSecondNumber = parseInt(prompt('Введіть кількість', '1'))
+		let productThirdPrice = parseFloat(prompt('Введіть вартість товару "Third"', ''))
+		let productThirdNumber = parseInt(prompt('Введіть кількість', '1'))
+		const TAX_VALUE = 20
+
+		//2. Обчислення
+		// Знаходимо загальну вартість першого товару
+		let productOneTotal = productOnePrice * productOneNumber
+		// Знаходимо загальну вартість другого товару 
+		let productSecondTotal = productSecondPrice * productSecondNumber
+		// Знаходимо загальну вартість третього товару 
+		let productThirdTotal = productThirdPrice * productThirdNumber
+		// Знаходимо загальну вартість покупки
+		let priceTotal = productOneTotal + productSecondTotal + productThirdTotal
+		// Знаходимо загальну суму ПДВ
+		let addedTax = (priceTotal * TAX_VALUE) / 100
+		//3. Вивод рузультатів
+		document.write(`Ваші результати: <br>
+			   Найменування  || Ціна || Кількість || Сума <br>
+   	 	01. Перший товар || ${productOnePrice} || ${productOneNumber} || ${productOneTotal} грн. <br> 
+   	 	02. Перший товар || ${productSecondPrice} || ${productSecondNumber} || ${productSecondTotal} грн. <br> 
+   	 	03. Перший товар || ${productThirdPrice} || ${productThirdNumber} || ${productThirdTotal} грн. <br> 
+    		ПДВ: ${addedTax} грн. <br>
+			Загальна сума: ${priceTotal} грн.`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

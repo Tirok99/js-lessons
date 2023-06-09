@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		let lenghtSantimeter = parseFloat(prompt('Введіть кількість сантиметрів', '0'))
+		const METER = 100
+		const KILOMETER = 10000
+
+		//2. Обчислення
+		// Переводимо отримане значення у метри
+		let lenghtMeter = lenghtSantimeter / METER
+		//  Переводимо отримане значення у кілометри
+		let lenghtKilometer = lenghtSantimeter / KILOMETER
+
+		//3. Вивод рузультатів
+		document.write(`Ваші результати: <br>
+   	 	1) Довжина: ${lenghtMeter} м. <br> 
+			2) Довжина: ${lenghtKilometer} км.`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

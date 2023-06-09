@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		let productPrice = parseFloat(prompt('Введіть вартість товару', ''))
+		let productNumber = parseInt(prompt('Введіть кількість', ''))
+		const TAX_VALUE = 5
+
+
+		//2. Обчислення
+		// Знаходимо загальну вартість 
+		let priceTotal = productPrice * productNumber
+		// Знаходимо ПДВ від загальгої вартості
+		let addedTax = (priceTotal * TAX_VALUE) / 100
+
+
+		//3. Вивод рузультатів
+		document.write(`Ваші результати: <br>
+   	 	1) Загальна вартість = ${priceTotal} грн. <br> 
+    		2) Сума ПДВ = ${addedTax} грн.`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

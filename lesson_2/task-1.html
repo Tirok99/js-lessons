@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		// Створюємо ззінну для першого дійсного числа
+		let numVarOne = parseFloat(prompt('Введіть число', ''))
+		// Створюємо ззінну для другого дійсного числа
+		let numVarTwo = parseFloat(prompt('Введіть число', ''))
+
+		//2. Обчислення
+		// Знаходимо суму двох чисел
+		let sum = numVarOne + numVarTwo
+		// Знаходимо добуток двох чисел
+		let divide = numVarOne * numVarTwo
+		// Знаходимо частку двох чисел
+		let multi = numVarOne / numVarTwo
+
+
+		//3. Вивод рузультатів
+		document.write(`Ваші результати: <br>
+   	 	1) Сума двох чисел = ${sum} <br> 
+    		2) Добуток двох чисел = ${divide} <br>
+   		3) Частка двох чисел = ${multi}`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
