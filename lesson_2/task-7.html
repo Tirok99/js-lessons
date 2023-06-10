@@ -9,15 +9,22 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script>
 		//1. Вхідні аргументів
-		let someMounth = parseInt(prompt('Введіть номер місяця від 1 до 12', '1'))
-		let someDay = parseInt(prompt('Введіть номер дня від 0 до 6', '0'))
+		// let someMounth = parseInt(prompt('Введіть номер місяця від 1 до 12', '1'))
+		let minMounth = 1
+		let maxMounth = 12
+		let randomMounth = minMounth + Math.floor(Math.random() * (maxMounth - minMounth + 1))
+
+		let minDay = 0
+		let maxDay = 6
+		let randomDay = minDay + Math.floor(Math.random() * (maxDay - minDay + 1))
+
 
 		//2. Обчислення
-		let someSum = someMounth + someDay
+		let someSum = randomMounth + randomDay
 		//3. Вивод рузультатів
 		document.write(`Ваші результати: <br>
-			1) Випадковій місяць: ${someMounth}<br>
-			2) Випадковий день: ${someDay}<br>
+			1) Випадковій місяць: ${randomMounth}<br>
+			2) Випадковий день: ${randomDay}<br>
    	 	3) Сума двох випадкових чисел = ${someSum}`)
 
 	</script>
