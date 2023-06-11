@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-7</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		let seasonYear = parseInt(prompt('Введіть номер місяця'))
+
+
+		//2. Обчислення
+		if (isNaN(seasonYear) || seasonYear <= 0 || seasonYear >= 13) {
+			document.write(`Некоректні дані`)
+		} else if (3 <= seasonYear && seasonYear <= 5) {
+			document.write(`Пора року : Весна`)
+		} else if (6 <= seasonYear && seasonYear <= 8) {
+			document.write(`Пора року : Літо`)
+		} else if (9 <= seasonYear && seasonYear <= 11) {
+			document.write(`Пора року : Осінь`)
+		} else seasonYear === 12 && seasonYear <= 2
+		document.write(`Пора року : Зима`)
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

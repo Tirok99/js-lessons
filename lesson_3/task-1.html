@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		// Створюємо змінні для першої дитини
+		let firstChildName = (prompt('Як звуть дитину?', ''))
+		let candyFirstChild = parseFloat(prompt('Введіть число', '0'))
+		// Створюємо змінні для першої дитини
+		let secondChildName = (prompt('Як звуть дитину?', ''))
+		let candySecondChild = parseFloat(prompt('Введіть число', '0'))
+
+		//2. Обчислення
+		// Умова якщо більше у першого
+		if (candyFirstChild > candySecondChild)
+			document.write(`Ваші результати: <br>
+			 У ${firstChildName}: ${candyFirstChild} цукерок <br>
+			 У ${secondChildName}: ${candySecondChild} цукерок <br>
+			 Більше цукерок у ${firstChildName}`)
+		// Умова якщо більше у другого
+		else if (candyFirstChild < candySecondChild)
+			document.write(`Ваші результати: <br>
+			У ${firstChildName}: ${candyFirstChild} цукерок <br>
+			 У ${secondChildName}: ${candySecondChild} цукерок <br>
+			 Більше цукерок у ${secondChildName}`)
+		// Умова якщо однакова кількість
+		else if (candyFirstChild === candySecondChild)
+			document.write(`Ваші результати: <br>
+			У ${firstChildName}: ${candyFirstChild} цукерок <br>
+			 У ${secondChildName}: ${candySecondChild} цукерок <br>
+			 Кількість цукерок однакова`)
+		// Умова якщо дані не відповідають умовам
+		else document.write(`Некоректні дані`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

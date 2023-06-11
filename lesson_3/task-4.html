@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		let userAge = parseInt(prompt('Введіть ваш вік'))
+		//2. Обчислення
+		if (isNaN(userAge) || userAge <= 0) {
+			document.write(`Некоректні дані`)
+		} else if (userAge <= 6) {
+			document.write(`Введеним даним відповідає вік дітини`)
+		} else if (userAge <= 17) {
+			document.write(`Введеним даним відповідає вік школяра`)
+		} else if (userAge <= 22) {
+			document.write(`Введеним даним відповідає вік студента`)
+		} else if (userAge <= 55) {
+			document.write(`Введеним даним відповідає вік працівника`)
+		} else {
+			document.write(`Введеним даним відповідає вік пенсіонера`)
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

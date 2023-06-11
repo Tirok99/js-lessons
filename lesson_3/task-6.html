@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-6</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		//1. Вхідні аргументів
+		let weekDay = prompt('Введіть номер дня тижня')
+		let res
+
+		//2. Обчислення
+		switch (weekDay) {
+			case '1':
+				res = 'Понеділок'
+				break
+			case '2':
+				res = 'Вівторок'
+				break
+			case '3':
+				res = 'Середа'
+				break
+			case '4':
+				res = 'Четверг'
+				break
+			case '5':
+				res = "П`ятниця"
+				break
+			case '6':
+				res = 'Субота'
+				break
+			case '7':
+				res = 'Неділя'
+				break
+
+			default:
+				res = 'Такого дня тижня не існує'
+				break
+		}
+		document.write(`ООбраний день тижня: ${res}`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

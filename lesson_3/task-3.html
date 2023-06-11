@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		let minNum = 1
+		let maxNum = 5
+		let randomNum = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+		let userNum = parseInt(prompt('Перша спроба. Введить число від 1 до 5'))
+
+
+		//2. Обчислення
+		if (isNaN(userNum) || userNum < 1 || userNum > 5) {
+			document.write(`Некоректні дані`)
+		} else if (userNum < randomNum) {
+			userNum = parseInt(prompt('Друга спроба. Введить число більше'))
+			if (userNum != randomNum) {
+				document.write(`На жаль ви не вгадали. Спробуйте ще.`)
+			} else {
+				document.write(`Ви вгадали. Випадкове число: ${randomNum}`)
+			}
+		} else if (userNum > randomNum) {
+			userNum = parseInt(prompt('Друга спроба. Введить число меньше'))
+			if (userNum != randomNum) {
+				document.write(`На жаль ви не вгадали. Спробуйте ще.`)
+			} else {
+				document.write(`Ви вгадали. Випадкове число: ${randomNum}`)
+			}
+		} else if (userNumOne = randomNum) {
+			document.write(`Ви вгадали. Випадкове число: ${randomNum}`)
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
