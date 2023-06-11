@@ -24,6 +24,7 @@ body{
 	background-color: #dadada;
 	border-radius: 10px;
 	opacity: 0.85;
+	padding-bottom: 25px;
 }
 .page__title{
 	padding-top: 35px;
