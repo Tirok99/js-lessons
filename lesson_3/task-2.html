@@ -8,7 +8,12 @@
 	<title>Task-2</title>
 	<link rel="stylesheet" href="css/style.css">
 	<script>
-		//1. Вхідні аргументів
+
+		// З клавіатури вводиться ціна товару і кількість грошей. 
+		// Якщо грошей не вистачає то відмовляємо у покупці, інакше, якщо ще	залишаються гроші, 
+		// то пропонуємо купити лотерею за 4 грн.
+
+		//1. Вхідні аргументи
 		let productPrice = parseFloat(prompt('Введіть ціну товару', '1'))
 		let moneyTotal = parseFloat(prompt('Введіть наявну суму грошей', '0'))
 		const lotteryPrice = 4
