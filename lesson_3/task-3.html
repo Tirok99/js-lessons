@@ -25,14 +25,14 @@
 		if (isNaN(userNum) || userNum < 1 || userNum > 5) {
 			document.write('Некоректні дані')
 		} else if (userNum < randomNum) {
-			userNum = parseInt(prompt('Друга спроба. Введить число більше'))
+			 let userNum = parseInt(prompt('Друга спроба. Введить число більше'))
 			if (userNum != randomNum) {
 				document.write('На жаль ви не вгадали. Спробуйте ще.')
 			} else {
 				document.write(`Ви вгадали. Випадкове число: ${randomNum}`)
 			}
 		} else if (userNum > randomNum) {
-			userNum = parseInt(prompt('Друга спроба. Введить число меньше'))
+			let userNum = parseInt(prompt('Друга спроба. Введить число меньше'))
 			if (userNum != randomNum) {
 				document.write('На жаль ви не вгадали. Спробуйте ще.')
 			} else {
