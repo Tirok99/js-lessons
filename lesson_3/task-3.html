@@ -15,26 +15,26 @@
 
 
 		//1. Вхідні аргументи
-		let minNum = 1
-		let maxNum = 5
+		const minNum = 1
+		const maxNum = 5
 		let randomNum = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
 		let userNum = parseInt(prompt('Перша спроба. Введить число від 1 до 5'))
 
 
 		//2. Обчислення
 		if (isNaN(userNum) || userNum < 1 || userNum > 5) {
-			document.write(`Некоректні дані`)
+			document.write('Некоректні дані')
 		} else if (userNum < randomNum) {
 			userNum = parseInt(prompt('Друга спроба. Введить число більше'))
 			if (userNum != randomNum) {
-				document.write(`На жаль ви не вгадали. Спробуйте ще.`)
+				document.write('На жаль ви не вгадали. Спробуйте ще.')
 			} else {
 				document.write(`Ви вгадали. Випадкове число: ${randomNum}`)
 			}
 		} else if (userNum > randomNum) {
 			userNum = parseInt(prompt('Друга спроба. Введить число меньше'))
 			if (userNum != randomNum) {
-				document.write(`На жаль ви не вгадали. Спробуйте ще.`)
+				document.write('На жаль ви не вгадали. Спробуйте ще.')
 			} else {
 				document.write(`Ви вгадали. Випадкове число: ${randomNum}`)
 			}
