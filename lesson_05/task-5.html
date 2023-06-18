@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Каса. Користувачу повідомляють суму, яку йому треба сплатити. Користувач поступово вводить суму грошей до тих пір, поки суми не буде достатньо для оплати товарів (кожного разу користувачу повідомляють, яку ще суму потрібно ввести). 
+
+		let totalPrice = parseFloat(prompt('Введіть загальну суму покупки', ''))
+		alert(`Сума вашої покупки: ${totalPrice} грн`)
+		do {
+			let userPay = parseInt(prompt('Введіть наявну суму'))
+			totalPrice -= userPay
+			if (totalPrice > 0) {
+				alert(`Залишилось внести: ${totalPrice} грн`)
+			}
+		} while (totalPrice > 0) {
+			alert(`Дякуємо за покупку. Ваш залишок: ${totalPrice * -1} грн.`)
+		}
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

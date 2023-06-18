@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком
+
+
+		// Створюємо знінну для виведення числового значення в таблиці
+		let tableNum = 0
+
+		// Цикл для створювання окремої таблиці
+		for (let tableList = 0; tableList < 3; tableList++) {
+			document.write('<table class="block-task__table" border="2px">')
+			// Цикл для створювання строк таблиці
+			for (let tableColumn = 0; tableColumn < 3; tableColumn++) {
+				document.write('<tr>')
+				//Цикл для створювання даних таблиці	
+				for (let tableValue = 0; tableValue < 3; tableValue++) {
+					document.write(`<td> ${++tableNum}</td>`)
+				}
+			}
+			document.write('</tr>')
+		}
+		document.write('</table>')
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

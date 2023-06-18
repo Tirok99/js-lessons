@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн, три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору зображення за номером).
+
+
+		// Вариант №1. З циклом.
+
+
+		let randomResult
+		let allSame = true
+		let previousResult
+		let win = 0
+
+		for (let machineSlot = 0; machineSlot < 3; machineSlot++) {
+			let someNum = 1 + Math.floor(Math.random() * 4)
+
+			switch (someNum) {
+				case 1:
+					randomResult = 'Lemon'
+					break
+				case 2:
+					randomResult = 'Apple'
+					break
+				case 3:
+					randomResult = 'Orange'
+					break
+				case 4:
+					randomResult = 'Banana'
+					break
+			}
+			document.write(`Ячейка ${machineSlot + 1}: ${randomResult}<br>`)
+			if (machineSlot > 0 && randomResult !== previousResult) {
+				allSame = false
+			}
+			previousResult = randomResult
+		}
+		if (allSame) {
+			switch (randomResult) {
+				case 'Lemon':
+					win = 100;
+					break
+				case 'Apple':
+					win = 200;
+					break
+				case 'Orange':
+					win = 500;
+					break
+				case 'Banana':
+					win = 1000
+					break
+			}
+		}
+		if (win > 0) {
+			document.write(`Поздоровляємо. Ваш виграш: ${win} грн.`)
+
+		} else {
+			document.write('На жаль ви нічого не вийграли.')
+		}
+
+
+		// Вариант №2 . Без циклу. Працює
+		// let win = 0;
+		// let someNum1 = 1 + Math.floor(Math.random() * 4)
+		// let someNum2 = 1 + Math.floor(Math.random() * 4)
+		// let someNum3 = 1 + Math.floor(Math.random() * 4)
+		// let randomResult1, randomResult2, randomResult3
+
+		// switch (someNum1) {
+		// 	case 1:
+		// 		randomResult1 = 'Lemon'
+		// 		break
+		// 	case 2:
+		// 		randomResult1 = 'Apple'
+		// 		break
+		// 	case 3:
+		// 		randomResult1 = 'Orange'
+		// 		break
+		// 	case 4:
+		// 		randomResult1 = 'Banana'
+		// 		break
+		// }
+		// switch (someNum2) {
+		// 	case 1:
+		// 		randomResult2 = 'Lemon'
+		// 		break
+		// 	case 2:
+		// 		randomResult2 = 'Apple'
+		// 		break
+		// 	case 3:
+		// 		randomResult2 = 'Orange'
+		// 		break
+		// 	case 4:
+		// 		randomResult2 = 'Banana'
+		// 		break
+		// }
+		// switch (someNum3) {
+		// 	case 1:
+		// 		randomResult3 = 'Lemon'
+		// 		break
+		// 	case 2:
+		// 		randomResult3 = 'Apple'
+		// 		break
+		// 	case 3:
+		// 		randomResult3 = 'Orange'
+		// 		break
+		// 	case 4:
+		// 		randomResult3 = 'Banana'
+		// 		break
+		// }
+		// document.write(`Ячейка 1: ${randomResult1}<br> Ячейка 2: ${randomResult2}<br> Ячейка 3: ${randomResult3}<br>`)
+		// if (randomResult1 === randomResult2 && randomResult2 === randomResult3) {
+		// 	switch (randomResult1) {
+		// 		case 'Lemon':
+		// 			win = 100
+		// 			break
+		// 		case 'Apple':
+		// 			win = 200
+		// 			break
+		// 		case 'Orange':
+		// 			win = 500
+		// 			break
+		// 		case 'Banana':
+		// 			win = 1000
+		// 			break
+		// 	}
+		// }
+		// if (win > 0) {
+		// 	document.write(`Поздоровляємо. Ваш виграш: ${win} грн.`)
+
+		// } else {
+		// 	document.write('На жаль ви нічого не вийграли.')
+		// }
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
