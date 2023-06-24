@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Задано натуральне число N. Знайти кількість натуральних чисел, що не перевищують N і не діляться на жодне з чисел 2,3,5. 
+
+		// Вводимо число
+		let userNumCount = parseInt(prompt("Введите число N:"))
+		// Змінна для кількості
+		let totalNumCount = 0
+		// Цикл по кількості чисел
+		for (let i = 1; i <= userNumCount; i++) {
+			// Умова (не діляться на жодне з чисел 2,3,5)
+			if (i % 2 !== 0 && i % 3 !== 0 && i % 5 !== 0) {
+				totalNumCount++
+				// Вивод переліку чисел відповідаючих умові
+				document.write(`${i},`)
+			}
+		}
+		document.write(`<br> Загальна кількість натуральних чисел: ${totalNumCount}`);
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

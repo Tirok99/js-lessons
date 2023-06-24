@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// З клавіатури вводяться n чисел та саме значення n. Написати програму, яка підраховує кількість від’ємних, додатних та нульових чисел серед введених
+
+		// Вводимо кількість чисел
+		let userCount = parseInt(prompt("Ввести кількість чисел:"));
+
+		//Знінні
+		let positiveCount = 0;
+		let negativeCount = 0;
+		let zeroCount = 0;
+
+		// Цикл на основі кількості чисел користувача
+		for (let i = 0; i < userCount; i++) {
+			// Вводимо числа
+			let userNum = parseFloat(prompt("Введите число:"));
+
+			if (userNum > 0) {
+				positiveCount++;
+			} else if (userNum < 0) {
+				negativeCount++;
+			} else {
+				zeroCount++;
+			}
+		}
+		document.write(`Кількість чисел: <br> Додані: ${positiveCount}<br> Від'ємні: ${negativeCount}<br> Нульові: ${zeroCount}`);
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

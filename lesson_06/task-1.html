@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Відобразити трикутник за допомогою символів «о»
+
+		//Кількість рядків
+		const rowHeight = 7;
+		let spacesNumber, letterNumber
+
+		//Цикл для віведення 7 рядків
+		for (let i = 0; i <= rowHeight; i++) {
+			//Кількість пробілів у рядку 
+			spacesNumber = rowHeight - i;
+			// Количество символів "0" у рядку
+			letterNumber = i + 1;
+
+			//Цикл для віведення пробілів перед символами "0"
+			for (let j = 1; j <= spacesNumber; j++) {
+				// Символ неразривного пробілу
+				document.write("&nbsp;")
+			}
+			//Цикл для віведення символів ")"
+			for (let k = 1; k <= letterNumber; k++) {
+				document.write("О");
+			}
+			// Перехід на новий рядок
+			document.write("<br>");
+		}
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
