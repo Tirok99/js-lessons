@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням)
+
+		// Строрюємо функцію для будування таблиці
+		function buildTable(rows, columns) {
+			document.write('<table class="block-task__table" border="2px">')
+			// Використовуємо цикл для будування кількості рядків
+			for (let i = 0; i < rows; i++) {
+				document.write('<tr>')
+				// Використовуємо цикл для будування кількості строк
+				for (let j = 0; j < columns; j++) {
+					document.write('<td>Message</td>')
+				}
+				document.write('</tr>')
+			}
+			document.write('</table>')
+		}
+		// Вводимо дані
+		let userRows = parseInt(prompt('Введіть кількість рядків'))
+		let userColumns = parseInt(prompt('Введіть кількість строк'))
+
+		// Визов функції та передача фактичних параметрів
+		let tableResult = buildTable(userRows, userColumns)
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

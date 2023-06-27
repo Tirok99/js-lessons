@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Создать функцию, которая случайным образом выводит на экран одно из 4 изображений (пути к изображениям передаются в функцию)
+
+
+		// Функція для генерації випадкового числа та прив'язки номеру зображення
+		function getRandomImage(image1, image2, image3, image4) {
+			let randomNumber = Math.floor(Math.random() * 4) + 1
+			let result
+			// Оператор вибору прив'язки зображення по сгенерованому номеру
+			switch (randomNumber) {
+				case 1:
+					result = imageSource1
+					break
+				case 2:
+					result = imageSource2
+					break
+				case 3:
+					result = imageSource3
+					break
+				case 4:
+					result = imageSource4
+					break
+
+			}
+			// Вивод результату
+			document.write(`<img src="${result}">`)
+		}
+
+		let imageSource1 = "/img/bear_1.png"
+		let imageSource2 = "./img/bear_2.png"
+		let imageSource3 = "./img/bear_3.png"
+		let imageSource4 = "./img/bear_4.png"
+
+		// Визов функції та передача фактичних параметрів
+		getRandomImage(imageSource1, imageSource2, imageSource3, imageSource4)
+
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
