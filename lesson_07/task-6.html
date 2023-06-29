@@ -13,36 +13,40 @@
 
 
 		// Функція для генерації випадкового числа та прив'язки номеру зображення
-		function getRandomImage(image1, image2, image3, image4) {
-			let randomNumber = Math.floor(Math.random() * 4) + 1
+				function getRandomImage(image1, image2, image3, image4) {
+			let randomNumber = 1 + Math.floor(Math.random() * 4)
 			let result
-			// Оператор вибору прив'язки зображення по сгенерованому номеру
+
+			// Оператор вибору прив'язки зображення по сгенерованому номеру		
 			switch (randomNumber) {
 				case 1:
-					result = imageSource1
+					result = `<img src="${image1}" alt="Image 1">`
 					break
 				case 2:
-					result = imageSource2
+					result = `<img src="${image2}" alt="Image 2">`
 					break
 				case 3:
-					result = imageSource3
+					result = `<img src="${image3}" alt="Image 3">`
 					break
 				case 4:
-					result = imageSource4
+					result = `<img src="${image4}" alt="Image 4">`
 					break
 
 			}
-			// Вивод результату
-			document.write(`<img src="${result}">`)
+
+			return result
 		}
 
-		let imageSource1 = "./img/bear_1.png"
-		let imageSource2 = "./img/bear_2.png"
-		let imageSource3 = "./img/bear_3.png"
-		let imageSource4 = "./img/bear_4.png"
+		// Пример использования функции
+		let image1 = "./img/bear_1.png"
+		let image2 = "./img/bear_2.png"
+		let image3 = "./img/bear_3.png"
+		let image4 = "./img/bear_4.png"
 
 		// Визов функції та передача фактичних параметрів
-		let imageShow = getRandomImage(imageSource1, imageSource2, imageSource3, imageSource4)
+		let randomImage = getRandomImage(image1, image2, image3, image4)
+		// Вивод результату
+		document.write(randomImage)
 
 
 
