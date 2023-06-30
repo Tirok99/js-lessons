@@ -12,38 +12,38 @@
 		//Умова
 		// Інвестор вклав   тис. грн на 20 років під 20% річних, а потім на 17 років під 27% річних. Визначити за допомогою циклів суму, яку він одержить.
 
-		// Початковий внесок
+			// Початковий внесок
 		let startAmount = 1000
 		// Ставка першого періоду вкладу
 		let firstRate = 20
 		// Ставка другого періоду вкладу
 		let nextRate = 27
 		// Кількість років першого періода
-		let firstPeriod = 20; // Продолжительность первого периода в годах
+		let firstPeriod = 20 // Тривалість першого періоду у годах
 		// Кількість років першого періода
-		let secondPeriod = 17; // Продолжительность второго периода в годах
+		let secondPeriod = 17 // Тривалість другого періоду у годах
 
 		document.write('<table class="block-task2__table" border="2px">');
 
-		// Создание заголовка таблицы
-		document.write('<tr>');
-		document.write('<th>Рік</th>');
-		document.write('<th>Сума вкладу</th>');
-		document.write('</tr>');
+		// Створення заголовку таблиці
+		document.write('<tr>')
+		document.write('<th>Рік</th>')
+		document.write('<th>Сума вкладу</th>')
+		document.write('</tr>')
 
-		// Первый период
+		// Перший період
 		for (let year = 1; year <= firstPeriod; year++) {
 			startAmount += (startAmount * firstRate) / 100
 
-			document.write('<tr>');
-			document.write(`<td>${year}</td>`);
-			document.write(`<td>${startAmount.toFixed(2)} грн</td>`);
-			document.write('</tr>');
+			document.write('<tr>')
+			document.write(`<td>${year}</td>`)
+			document.write(`<td>${startAmount.toFixed(2)} грн</td>`)
+			document.write('</tr>')
 		}
-		document.write('</table>');
+		document.write('</table>')
 
-		// Второй период
-		document.write('<table class="block-task2__table" border="2px">');
+		// Другий період
+		document.write('<table class="block-task2__table" border="2px">')
 		for (let year = 1; year <= secondPeriod; year++) {
 			startAmount += (startAmount * nextRate) / 100
 
