@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+		// ================================
+
+		// Створюємо функцію для збору індексів товарів
+		function getBuyProducts(money, prices) {
+			// Змінна для збору індексів товарів
+			let buyProducts = []
+			// Цикл по масиву цін наявних товарів
+			for (let i = 0; i < prices.length; i++) {
+				// Умова якщо сумма грошей більше вартості товару у поточній ітараціі
+				if (money >= prices[i]) {
+					// Додаємо у масив
+					buyProducts.push(i + 1)
+					// Мінусуємо вартість товару з суми користувача
+					money -= prices[i]
+				}
+			}
+			return buyProducts
+		}
+		// Створюємо функцію для пошуку назв товарів
+		function getShowProductsNames(names, prices) {
+			// Змінна для збору назв товарів
+			let productNames = []
+			// Цикл по масиву вартості товарів
+			for (let j = 0; j < availablePurchase.length; j++) {
+				// Додаємо у масив
+				productNames.push(productName[availablePurchase[j]])
+			}
+			return productNames
+		}
+		// Змінна для вводу кількості грошей
+		let userMoney = parseFloat(prompt("Введіть наявну кількість грошей"))
+		// Задаємо масиви
+		let productCost = [1000, 300, 185, 550, 280, 190, 470, 1500, 2700]
+		let productName = ['Праска', 'Шампунь', 'Ганчірка', 'Набір ножів', 'Відро', 'Соусниця', 'Тостер', 'Мультиварка', 'Мікрохвильова пічь',]
+		// Визов функції та передача параметрів
+		let availablePurchase = getBuyProducts(userMoney, productCost)
+		let availableNames = getShowProductsNames(availablePurchase, productName)
+
+		document.write(`Доступні товари за ціною:  ${productCost} грн. <br><br>`)
+		document.write(`Доступна кількість грошей: ${userMoney} грн. <br>`)
+		document.write(`Можливо купити товари за номером: ${availablePurchase}<br>`)
+		document.write(`Доступні товари за обраними номерами: ${availableNames}<br>`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

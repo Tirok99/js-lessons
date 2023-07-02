@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів  (поки він не відмовиться). Знаходити сумарний виграш.
+		// ==============================
+
+		// Створюємо функцію для генерації випадкових чисел у діапазоні
+		function getRandomSum(minNum, maxNum, count) {
+			// Змінна для збору у масив даних генерації3
+			let randomNumArray = []
+			// Цикл на задану коритувачем довжину 
+			for (let i = 0; i < count; i++) {
+				let createNum = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+				// Додаємо значення у масив
+				randomNumArray.push(createNum)
+			}
+			return randomNumArray
+		}
+
+		// Створюємо функцію для вводу користувачем бажаних елементів 
+		function getUserNumInput(count) {
+			// Змінна для збору у масив даних 
+			let userNumArray = []
+			// Цикл на довжину раніше введеної кількості сум генерації
+			for (let i = 0; i < count; i++) {
+				let numInput = parseInt(prompt(`Можливо ввести ${countNum} номерів.Введіть номер елементу ${i + 1}`))
+				// Цикл з передумовою на введення тільки ЧИСЛА від 1 до довжини масиву
+				while (isNaN(numInput) || numInput < 0 || numInput > count) {
+					numInput = parseInt(prompt(`Помилка!. Введіть коректне число`))
+				}
+				// Додаємо у масив
+				userNumArray.push(numInput)
+			}
+			return userNumArray
+		}
+		// Створюємо функцію для обчислення суми виграшу 
+		function calculateWinSum(numbers, values) {
+			let totalWin = 0
+			// Цикл на довжину масиву визначену користувачем
+			for (let i = 0; i < numbers.length; i++) {
+				// Додавання у виграшну суму значень обраних елементів
+				totalWin += values[numbers[i] - 1]
+			}
+			return totalWin
+		}
+
+		// Визов функції та передача параметрів	
+		let countNum = parseInt(prompt('Введіть бажану кількість сум для генерації '))
+		let randomValues = getRandomSum(-500, 500, countNum)
+		let userNumbers = getUserNumInput(countNum)
+		let userWin = calculateWinSum(userNumbers, randomValues)
+
+		document.write(`Сгенеровані суми можливого виграшу: ${randomValues} <br><br>`)
+		document.write(`Обрані користувачем номери елементів: ${userNumbers} <br>`)
+		document.write(`Загальна сума виграшу: ${userWin}`)
+
+
+		// =======================================
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

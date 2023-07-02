@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Дано послідовність оцінок учня. Підрахувати кількість:
+		// 1)	двійок
+		// 2)	кількість хороших оцінок (добре, відмінно);
+		// 3)	кількість оцінок, які нижче середнього.
+		// ===============================================================
+
+		// Створюємо функцію для вводу оцінок
+		function getScoreNumber() {
+			// Оголошення масиву для збору оцінок
+			let scoreNumbers = []
+			// Цикл на введення 10 оцінок
+			for (let i = 0; i < 10; i++) {
+				let scoreInput = parseInt(prompt(`Можливі оцінки ввід 2 до 5. Введіть оцінку номер ${i + 1}/10`))
+				// Цикл з передумовою на введення тільки ЧИСЛА від 2 до 5
+				while (isNaN(scoreInput) || scoreInput <= 1 || scoreInput >= 6) {
+					scoreInput = parseFloat(prompt(`Помилка!`))
+				}
+				scoreNumbers.push(scoreInput)
+			}
+			return scoreNumbers
+		}
+		// Створюємо функцію для пошуку "2"
+		function getFindTwo(scores) {
+			// Оголошуємо змінну, яка буде збирати дані
+			let countScores2 = 0
+			// Цикл на усю довжину масиву
+			for (let i = 0; i < scores.length; i++) {
+				// Умова пошуку - строге дорівнювання
+				if (scores[i] === 2) {
+					// Додаємо у змінну співпадіння
+					countScores2++
+				}
+			}
+			return countScores2
+		}
+		// Створюємо функцію для пошуку "4", "5"
+		function getFindFourFive(scores) {
+			// Оголошуємо змінну, яка буде збирати дані
+			let countScores4And5 = 0
+			// Цикл на усю довжину масиву
+			for (let i = 0; i < scores.length; i++) {
+				// Умова пошуку - строге дорівнювання
+				if (scores[i] === 4 || scores[i] === 5) {
+					// Додаємо у змінну співпадіння
+					countScores4And5++
+				}
+			}
+			return countScores4And5
+		}
+		// Створюємо функцію середнього аріфметичного оцінок
+		function getFindLessAverage(scores) {
+			// Оголошуємо змінну для суми оцінок
+			let scoresSum = 0
+			// Цикл на усю довжину масиву
+			for (let i = 0; i < scores.length; i++) {
+				// Додаємо у змінну значення индексу масива
+				scoresSum += scores[i]
+			}
+			// Знаходимо середнє аріфметичне
+			let average = scoresSum / scores.length
+			// Знаходимо кількість по умові
+			let countLessAverage = 0;
+			for (let i = 0; i < scores.length; i++) {
+				if (scores[i] < average) {
+					countLessAverage++
+				}
+			}
+			return countLessAverage
+		}
+
+		// Визов функції та передача параметрів
+		let inputScoreNumbers = getScoreNumber()
+		let findSum2 = getFindTwo(inputScoreNumbers)
+		let findSum4And5 = getFindFourFive(inputScoreNumbers)
+		let findSumLessAverage = getFindLessAverage(inputScoreNumbers)
+
+		document.write(`Введені оцінки: ${inputScoreNumbers} <br> <br>`)
+		document.write(`Кількість оцінок "2": ${findSum2} <br>`)
+		document.write(`Кількість оцінок "4", "5": ${findSum4And5} <br>`)
+		document.write(`Кількість оцінок, які нижче середнього: ${findSumLessAverage}`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

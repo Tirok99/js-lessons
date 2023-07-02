@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:regular,500,700&display=swap");
+
+[class*="__container"] {
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1200px; /* 1170 + 15 + 15  */
+  margin: 0 auto;
+}
+body {
+  font-family: "Roboto";
+  font-size: 16px;
+}
+
+.page {
+  background: url(../img/pattern.jpg) 0 0 / cover no-repeat;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.page__main {
+}
+.main {
+}
+.page__container {
+  background-color: #dadada;
+  border-radius: 10px;
+  opacity: 0.85;
+  padding-bottom: 25px;
+}
+.page__title {
+  padding-top: 35px;
+  text-align: center;
+}
+.page__block {
+}
+.block-task {
+}
+.block-task__list {
+  margin: 0 auto;
+  padding: 0px 10px;
+  /* max-width:700px; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+}
+.block-task__list {
+}
+.block-task__item {
+  padding: 15px 25px;
+  background-color: #a5c2b2;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 767.98px) {
+  .block-task__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.block-task__item {
+  margin-bottom: 30px;
+}
+
+.block-task__title {
+  align-self: start;
+  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+}
+.block-task__title::before {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: #000;
+}
+.block-task__text {
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+.block-task__text_margin {
+  margin-bottom: 10px;
+}
+.block-task__image {
+  margin-bottom: 10px;
+}
+.block-task__image img {
+  max-width: 100%;
+}
+
+.block-task__link {
+  font-weight: 700;
+  letter-spacing: 2px;
+  align-self: start;
+  padding: 12px 30px;
+  border-radius: 10px;
+  color: #000;
+  background-color: #f09e23;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.block-task__link:hover {
+  color: #fff;
+  background-color: #437543;
+}
+.block-task__button {
+  margin-top: 40px;
+}
+.block-task__table {
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+.button-hello {
+}
+.button-hello {
+  font-weight: 700;
+  letter-spacing: 2px;
+  align-self: start;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #000;
+  color: #000;
+  background-color: #cfcecb;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.button-hello:hover {
+  color: #fff;
+  background-color: #4e58af;
+}
+.button-hello:not(:last-child) {
+  margin-bottom: 10px;
+}
