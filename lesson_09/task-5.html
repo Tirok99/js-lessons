@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
+		// ======================================
+
+		// Функція для вводу сум користувачем
+		function getUserSumInput(count) {
+			// Змінна для сбору даних
+			let userSumArray = []
+			// Цикл для вводу даних
+			for (let i = 0; i < count; i++) {
+				let numInput = parseFloat(prompt(`Можливо ввести ${count} сум. Введіть суму № ${i + 1}`))
+				// Перевірка на коректність
+				while (isNaN(numInput) || numInput < 0) {
+					numInput = parseFloat(prompt(`Помилка! Введіть коректне число`))
+				}
+				// Додання у масив
+				userSumArray.push(numInput)
+			}
+			return userSumArray
+		}
+		// Змінна для вводу кількості можливих сум
+		let countSum = parseInt(prompt('Введіть бажану кількість сум для розрахунків '))
+		// Визов функції та передача параметрів
+		let userSum = getUserSumInput(countSum)
+
+		// Змінна для суми податку
+		let taxSum = 0
+		// Масив для даних по податкам
+		let taxAmounts = []
+
+		// Перегляд масиву
+		userSum.forEach(sum => {
+			// Обчислення налогу 20%
+			let taxAmount = (sum * 0.2).toFixed(2)
+			// Додаємо обчислення у масив
+			taxAmounts.push(parseFloat(taxAmount))
+			// Додаємо обчислення у суму
+			taxSum += parseFloat(taxAmount)
+		})
+
+		document.write(`Дані значення у масиві: ${userSum}<br><br>`)
+		document.write(`Суми налогу: ${taxAmounts}<br><br>`)
+		document.write(`Загальна сума налогу: ${taxSum.toFixed(2)}<br><br>`)
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

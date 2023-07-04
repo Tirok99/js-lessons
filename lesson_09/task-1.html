@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками.
+
+		// ==================================================
+		// Створюємо массив на 16 елементів. Вони зараз Undefined
+		let array = new Array(16)
+		// Додаємо "1" з 0 до 7 елементу (8-1), а одночасно додаєм "7" від 8 єлементу до кінця масиву 
+		array.fill(1, 0, 8).fill(7, 8)
+		console.log(array);
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

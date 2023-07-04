@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Дано масив елементів. Вивести на екран елементи, що більші за 100
+		// =============================================
+
+		// Задаємо масив з даними
+		let array = [23, 45, 23, 732, 147, 0, 2, 50, 513, 589, 226, 66, 3, 300]
+
+		// Проходимо по кожному елементу масиву передаючи у тимчасову змінну numMoreThen100 
+		for (let numMoreThen100 of array) {
+			// Задаємо умову більше ніж 100
+			if (numMoreThen100 > 100) {
+				document.write(`${numMoreThen100}<br>`)
+			}
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+</body>
+
+</html>

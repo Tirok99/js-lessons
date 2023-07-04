@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+
+		// Дано масив імен. Сформувати масив з перших літер цих імен.
+		// =====================================
+
+		let namesList = ["Борис", "Вікторія", "Юлія", "Тарас", "Володимир", "Ганна", "Наталія", "Степан"]
+		// Створюємо змінну для масиву 
+		let firstLetters = []
+
+		// Перегляд масиву методом forEach
+		namesList.forEach(name => {
+			// Змінна яка шукає перші літери
+			let firstLetter = name.charAt(0)
+			// Додання у масив
+			firstLetters.push(firstLetter)
+		})
+		document.write(`Масив імен: ${namesList}<br><br> `)
+		document.write(`Перші литери: ${firstLetters}`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
