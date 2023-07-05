@@ -12,14 +12,16 @@
 		// Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
 
 		function infoForBanner(imgSrc, title, link) {
-			document.write(`<a href="${link}">
-    <img src="${imgSrc}">
-  </a>
-  <h3>${title}</h3>`);
+			let bannerImage = `<a href="${link}">
+    		<img src="${imgSrc}"></a>
+ 			 <h3>${title}</h3>`
+			return bannerImage
 		}
 
 		// Визов функції та передача фактичних параметрів
-		let bannerShow = infoForBanner("./img/fruits.jpg", "Заголовок банера", "http://google.com");
+		let bannerShow = infoForBanner("./img/fruits.jpg", "Заголовок банера", "http://google.com")
+
+		document.write(bannerShow)
 
 	</script>
 </head>
