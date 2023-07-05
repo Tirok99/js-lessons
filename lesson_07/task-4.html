@@ -11,26 +11,27 @@
 
 		// Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється заданим фіксованим повідомленням)
 
-		// Строрюємо функцію для будування таблиці
 		function buildTable(rows, columns) {
-			document.write('<table class="block-task__table" border="2px">')
+			let tableHTML = '<table class="block-task__table" border="2px">'
 			// Використовуємо цикл для будування кількості рядків
 			for (let i = 0; i < rows; i++) {
-				document.write('<tr>')
+				tableHTML += '<tr>'
 				// Використовуємо цикл для будування кількості строк
 				for (let j = 0; j < columns; j++) {
-					document.write('<td>Message</td>')
-				}
-				document.write('</tr>')
+					tableHTML += '<td>Message</td>'
+				} 3
+				tableHTML += '</tr>'
 			}
-			document.write('</table>')
+			tableHTML += '</table>'
+			return tableHTML
 		}
 		// Вводимо дані
 		let userRows = parseInt(prompt('Введіть кількість рядків'))
-		let userColumns = parseInt(prompt('Введіть кількість строк'))
+		let userColumns = parseInt(prompt('Введіть кількість стовпців'))
 
 		// Визов функції та передача фактичних параметрів
 		let tableResult = buildTable(userRows, userColumns)
+		document.write(tableResult)
 
 
 	</script>
