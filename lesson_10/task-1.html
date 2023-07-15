@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)
+		// 1)Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.
+		// 2)Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн.
+		// 3)Сформувати список з тих цін, які більші за попереднє значення
+		// 4)Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального
+		// 5)Підрахувати кількість змін цін
+		// 6)Визначити, чи є ціна, що менше 1000
+		// 7)Визначати, чи усі ціни більше за 1000
+		// 8)Підрахувати кількість цін, що більше за 1000
+		// 9)Підрахувати суму цін, що більше за 1000
+		// 10)Знайти першу ціну, що більше за 1000
+		// 11)Знайти індекс першої ціни, що більше за 1000
+		// 12)Знайти останню ціну, що більше за 1000
+		// 13)Знайти індекс останньої ціни, що більше за 1000
+
+
+		// ==================================================
+		// Змінна для вводу кількості генераціі значеннь
+		let usersStocksCount = parseFloat(prompt("Введіть кількість цінних паперів для розрахунку: "))
+
+		function getStocksArray(count) {
+			let priceArray = []
+			for (let i = 0; i < count; i++) {
+				priceArray.push(Math.floor(Math.random() * 10000))
+			}
+			return priceArray
+		}
+		//  5 Функція для облислення максимального значення та значень у процентах
+		function getPricePercent(prices) {
+			// Знаходимо максимальне число
+			let maxPrice = prices.reduce((maxValue, priceElement) => (priceElement > maxValue ? priceElement : maxValue))
+			// Обчислюємо значення у відсотках по відношенню до максимвльного значення
+			let pricePercentages = prices.map((price) => {
+				// Переводимо у відсотки
+				let percentValue = ((price / maxPrice) * 100).toFixed(2)
+				return percentValue
+			});
+			return pricePercentages;
+		}
+
+
+		// Визов функції та передача параметрів
+		let userStocks = getStocksArray(usersStocksCount)
+		let pricePercentagesArray = getPricePercent(userStocks)
+
+
+		//1 Створюємо масив з умовою значення більше ніж 1000
+		let priceMoreThen1000 = userStocks.filter(price => price > 1000)
+		//2 Створюємо новий масив з номерами значень більше 1000 
+		let priceIndexMoreThen1000 = userStocks.map((price, index) => price > 1000 ? index : -1).filter(index => index !== -1)
+		//3 Фільтруємо масив з умовою значення більше ніж попереднє
+		let priceMoreThenPrev = userStocks.filter((price, index) => price > userStocks[index - 1])
+		//6 Перевірка усього масиву на умову значення більше 1000
+		let allNumMore1000 = userStocks.every(element => element > 1000)
+		//7 Перевірка усього масиву на умову значення більше 1000
+		let allNumLess1000 = userStocks.some(element => element < 1000)
+		//8 Кількість значень більше 1000
+		let countMoreYhen1000 = userStocks.reduce((prevPriceCount, element) => element > 0 ? prevPriceCount + 1 : revPriceCount, 0)
+		//9 Сума значень більше 1000
+		let sumMoreYhen1000 = userStocks.reduce((prevSum, price) => (price > 1000 ? prevSum + price : prevSum), 0)
+		//10 Пошук першого єлементу по умові більше 1000
+		let firstPriceMore1000 = userStocks.find((element) => element > 1000)
+		//11 Пошук індексу першого єлементу по умові більше 1000
+		let firstPriceIndexMore1000 = userStocks.findIndex((element, index, baseArray) => element > 1000)
+		//12 Пошук останього єлементу по умові більше 1000
+		let lastPriceMore1000 = userStocks.findLast((element) => element > 1000)
+		//13 Пошук індексу останьго єлементу по умові більше 1000
+		let lastPriceIndexMore1000 = userStocks.findLastIndex((element, index, baseArray) => element > 1000)
+
+
+		document.write(`Історія цін: ${userStocks} <br><br>`)
+		document.write(`1) Масив із значеннями більше ніж 1000: ${priceMoreThen1000}<br><br>`)
+		document.write(`2) Масив з номерами значень більше ніж 1000: ${priceIndexMoreThen1000}<br><br>`)
+		document.write(`3) Значення більше ніж попереднє: ${priceMoreThenPrev}<br><br>`)
+		document.write(`4) Ціни в процентах відносно максимального значення: ${pricePercentagesArray.join('%, ')}<br><br>`)
+		document.write(`6) Перевірка - Наявність значення меньш ніж 1000 : ${allNumLess1000} <br><br>`)
+		document.write(`7) Перевірка - Усі значення більше 1000 : ${allNumMore1000} <br><br>`)
+		document.write(`8) Кількість значень більше 1000 : ${countMoreYhen1000} <br><br>`)
+		document.write(`9) Сума значень більше 1000 : ${sumMoreYhen1000} <br><br>`)
+		document.write(`10) Перше значення більше 1000 : ${firstPriceMore1000}<br><br>`)
+		document.write(`11) Індекс першого значення більше 1000 : ${firstPriceIndexMore1000}<br><br>`)
+		document.write(`12) Останне значення більше 1000 : ${lastPriceMore1000}<br><br>`)
+		document.write(`13) Індекс останього значення більше 1000 : ${lastPriceIndexMore1000}<br><br>`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
