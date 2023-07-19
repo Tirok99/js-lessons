@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача.Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+		// 1) загальний прибуток кожного масиву за тиждень;
+		// 2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+		// 5) максимальний прибуток за середу
+		// 7) відсортувати кожен тиждень за зростанням
+		// 8) відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+
+		// ==================================================
+		// Змінна для вводу кількості магазинів
+		let usersShopCount = parseInt(prompt("Введіть кількість магазинів для розрахунку: "))
+		const workingDaysNum = 7
+
+		// Функція для створення масиву прибутку магазинів
+		function getShopsProfitArray(shops, days) {
+			// Создаємо масив для кількості магазинів
+			let arrayShopsProfit = []
+			// Цикл на довжину рядків
+			for (let i = 0; i < shops; i++) {
+				// Создаємо масив для щоденних значень прибутку 
+				let daysProfitArray = []
+				// Цикл на довжину стовбців
+				for (let j = 0; j < days; j++) {
+					// Генеруємо значення для елементів масиву
+					let randomNumber = Math.floor(Math.random() * 10000) + 1
+					// Додаємо значення у масив рядків
+					daysProfitArray.push(randomNumber)
+				}
+				// Додаємо значення у двомірний масив 
+				arrayShopsProfit.push(daysProfitArray)
+			}
+			return arrayShopsProfit
+		}
+		// Визов функції та передача параметрів
+		let arrayShopsProfit = getShopsProfitArray(usersShopCount, workingDaysNum)
+
+		// Функція візуалізація масиву через  таблицю
+		function generateTable(data) {
+			let table = '<table class="block-task__table" border="2px">'
+			// Цикл для створення таблиці
+			for (let i = 0; i < data.length; i++) {
+				table += `<tr><th>Магазин №: ${i + 1}</th>`
+				for (let j = 0; j < data[i].length; j++) {
+					table += `<td>${data[i][j]}</td>`
+				}
+				table += "</tr>"
+			}
+			table += "</table>"
+			return table
+		}
+		// Визов функції та передача параметрів
+		let tableShopsProfit = generateTable(arrayShopsProfit)
+		// //Вивод на сторінку HTML
+		document.write(tableShopsProfit)
+		// ==============================================================
+		//1) Загальний прибуток для кожного магазину
+		function getSumEachShopProfit(array) {
+			// Создаємо масив для кожного магазину
+			let shopWeekProfits = []
+			for (let shop = 0; shop < array.length; shop++) {
+				// Змінна для суми прибутку магазину
+				let sumProfit = 0
+				for (let day = 0; day < array[shop].length; day++) {
+					sumProfit += array[shop][day]
+				}
+				shopWeekProfits.push(sumProfit)
+			}
+			return shopWeekProfits
+		}
+		// Визов функції та передача параметрів
+		let eachShopWeekProfits = getSumEachShopProfit(arrayShopsProfit)
+		document.write(`1) Сума прибутку кожного магазину: ${eachShopWeekProfits}<br><br>`)
+		// =====================================================================
+		//2) Прибуток за окремі дні
+		function getSumEachDay(array) {
+			// Создаємо масив для кожного магазину
+			let shopDayProfits = []
+			for (let shop = 0; shop < array[0].length; shop++) {
+				// Змінна для суми прибутку за день
+				let sum = 0
+				for (let day = 0; day < array.length; day++) {
+					sum += array[day][shop]
+				}
+				shopDayProfits.push(sum)
+			}
+			return shopDayProfits
+		}
+		// Визов функції та передача параметрів
+		let eachDayProfits = getSumEachDay(arrayShopsProfit)
+		document.write(`2) Сума прибутку за окремі дні: ${eachDayProfits}<br><br>`)
+		// =====================================================================
+		//5) Прибуток за середу
+		function getWednesdayProfit(array) {
+			// Создаємо масив для кожного магазину
+			let someDayProfit = []
+			for (let shop = 2; shop <= 2; shop++) {
+				// Змінна для суми прибутку за день
+				let sum = 0
+				for (let day = 0; day < array.length; day++) {
+					sum += array[day][shop]
+				}
+				someDayProfit.push(sum)
+			}
+			return someDayProfit
+		}
+		// Визов функції та передача параметрів
+		let wednesdayProfit = getWednesdayProfit(arrayShopsProfit)
+
+		document.write(`5) Сума прибутку за середу: ${wednesdayProfit}<br><br>`)
+		// =====================================================================
+		//7) Сортировка за сростанням у кожному тижні
+		function getSortedEachDayProfits(array) {
+			// Змінна для додання відсортованих значень
+			let sortedArray = []
+			// Цикл по кількості магазинів
+			for (let shop = 0; shop < array.length; shop++) {
+				// Змінна з функцією для сортування 
+				let sortedProfits = array[shop].sort((element1, element2) => element1 - element2)
+				//   Додання відсортованих значень у масив
+				sortedArray.push(sortedProfits)
+			}
+			return sortedArray
+		}
+		// Визов функції та передача параметрів
+		let sortedEachDayProfits = getSortedEachDayProfits(arrayShopsProfit)
+		let tableSortValue = generateTable(sortedEachDayProfits)
+		// //Вивод на сторінку HTML
+		document.write(tableSortValue)
+		document.write(`7) Сортування за зростанням <br><br>`)
+		// =====================================================================
+		//8) Сортировка за сростанням у кожному тижні
+		// Функція пошуку максимально значення для кожного магазину
+		function getMaxValue(array) {
+			let maxValue = 0
+			for (let i = 0; i < array.length; i++) {
+				if (array[i] > maxValue) {
+					maxValue = array[i]
+				}
+			}
+			return maxValue
+		}
+		// Функція пошуку максимально значення для кожного магазину
+		function getSortedMaxValue(array) {
+			let sortedArray = []
+			for (let i = 0; i < array.length; i++) {
+				sortedArray.push([getMaxValue(array[i]), i])
+			}
+			sortedArray.sort((a, b) => b[0] - a[0])
+			return sortedArray
+		}
+
+		// Визов функції та передача параметрів
+		let maxValue = getMaxValue(arrayShopsProfit)
+		let sortedMaxValueShop = getSortedMaxValue(arrayShopsProfit)
+		let tableSortMaxShop = generateTable(sortedMaxValueShop)
+		// //Вивод на сторінку HTML
+		document.write(tableSortMaxShop)
+		document.write(`8) Сортування за спаданням максимального елемента <br><br>`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // 2) --- Сума за робочі дні
+      // let sum = 0
+      // for (let weekIndex = 0; weekIndex < incomes.length; weekIndex++) {
+      //   for (let dayIndex = 0; dayIndex < workingDaysNum; dayIndex++) {
+      //     sum += incomes[weekIndex][dayIndex] // sum += incomes[0][0]
+      //   }
+      // }
+      // document.write(sum)
+      // 3) за вихідні за тижні з непарними індексами
+      // let sum = 0
+      // for (let weekIndex = 1; weekIndex < incomes.length; weekIndex += 2) {
+      //   for (let dayIndex = 5; dayIndex <= 6; dayIndex++) {
+      //     sum += incomes[weekIndex][dayIndex] // sum += incomes[0][0]
+      //   }
+      // }
+      // document.write(sum)
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

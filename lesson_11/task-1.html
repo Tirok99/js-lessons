@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Знайти суми елементів у вказаній області (масиви розділені на 4 рівні частини)
+		//  1 0    0 1    0 0   0 0 
+		//  0 0    0 0    1 0   0 1
+
+
+		// ==================================================
+		// Функція для створення двомірного масиву
+		function get2DArray(rows, cols) {
+			// Создаємо пустий двомірний масив 
+			let array = []
+			// Цикл на довжину рядків
+			for (let i = 0; i < rows; i++) {
+				// Создаємо пустий масив рядка
+				let row = []
+				// Цикл на довжину стовбців
+				for (let j = 0; j < cols; j++) {
+					// Генеруємо значення для елементів масиву
+					let randomNumber = Math.floor(Math.random() * 10) + 1
+					// Додаємо значення у масив рядків
+					row.push(randomNumber)
+				}
+				// Додаємо значення у двомірний масив 
+				array.push(row)
+			}
+			return array
+		}
+		// Функція для обчислення середини масиву
+		function findMiddle(length) {
+			return Math.floor(length / 2)
+		}
+		// Функція для обчислення суми значень елемнтів 1 чверті масиву
+		function sumElements1Q(array) {
+			let sum = 0
+			// Цикл для знаходження суми елементів 1 чверті масиву
+			for (let i = 0; i < middleRowIndex; i++) {
+				for (let j = 0; j < middleColIndex; j++) {
+					sum += array[i][j]
+				}
+			}
+			return sum
+		}
+		// Функція для обчислення суми значень елемнтів 2 чверті масиву
+		function sumElements2Q(array) {
+			let sum = 0
+			// Цикл для знаходження суми елементів 2 чверті масиву
+			for (let i = 0; i < middleRowIndex; i++) {
+				for (let j = middleColIndex; j < array2D[0].length; j++) {
+					sum += array[i][j]
+				}
+			}
+			return sum
+		}
+		// Функція для обчислення суми значень елемнтів 3 чверті масиву
+		function sumElements3Q(array) {
+			let sum = 0
+			// Цикл для знаходження суми елементів 3 чверті масиву
+			for (let i = middleRowIndex; i < array2D.length; i++) {
+				for (let j = 0; j < middleColIndex; j++) {
+					sum += array[i][j]
+				}
+			}
+			return sum
+		}
+		// Функція для обчислення суми значень елемнтів 4 чверті масиву
+		function sumElements4Q(array) {
+			let sum = 0
+			// Цикл для знаходження суми елементів 4 чверті масиву
+			for (let i = middleRowIndex; i < array2D.length; i++) {
+				for (let j = middleColIndex; j < array2D[0].length; j++) {
+					sum += array[i][j]
+				}
+			}
+			return sum
+		}
+		// Визов функції та передача параметрів
+		let array2D = get2DArray(4, 8)
+		const middleRowIndex = findMiddle(array2D.length);
+		const middleColIndex = findMiddle(array2D[0].length);
+		let sumElementPart1 = sumElements1Q(array2D, middleRowIndex, middleColIndex)
+		let sumElementPart2 = sumElements2Q(array2D, middleRowIndex, middleColIndex)
+		let sumElementPart3 = sumElements3Q(array2D, middleRowIndex, middleColIndex)
+		let sumElementPart4 = sumElements4Q(array2D, middleRowIndex, middleColIndex)
+
+		// Вивод у консоль
+		console.log(array2D)
+
+		// Візуалізація масиву через  таблицю
+		let table = '<table class="block-task__table" border="2px">'
+		// Цикл для створення таблиці
+		for (let i = 0; i < array2D.length; i++) {
+			table += "<tr>"
+			for (let j = 0; j < array2D[i].length; j++) {
+				table += "<td>" + array2D[i][j] + "</td>"
+			}
+			table += "</tr>"
+		}
+		table += "</table>"
+
+		//Вивод на сторінку HTML
+		document.write(table)
+		document.write(`1) Сума елементів верхньої лівої чверті масиву: ${sumElementPart1}<br>`)
+		document.write(`2) Сума елементів верхньої правої чверті масиву: ${sumElementPart2}<br>`)
+		document.write(`3) Сума елементів нижньoї лівої чверті масиву: ${sumElementPart3}<br>`)
+		document.write(`3) Сума елементів нижньoї правої чверті масиву: ${sumElementPart4}<br>`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
