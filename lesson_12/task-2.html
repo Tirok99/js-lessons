@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
+
+		// ==================================================
+		// Функція для створення масиву з рандомними числами
+		function getRandomArray(length, min, max) {
+			// Змінна для створення масиву
+			let randomArray = []
+			// Цикл на довжину рядків
+			for (let i = 0; i < length; i++) {
+				// Додаємо випадкові значення у масив рядків
+				randomArray.push(Math.floor(Math.random() * (max - min + 1)) + min)
+			}
+			return randomArray
+		}
+		// Функція для сортування масиву
+		function getCoctailSort(array) {
+			// Змінна для кількості сортувань
+			let exchangesCount = 0
+			// Змінні 
+			let leftIndex = 0
+			let rightIndex = array.length - 1
+			while (leftIndex < rightIndex) {
+				// Цикл по масиву зліва направо
+				for (let i = leftIndex; i < rightIndex; i++) {
+					// Умова коли поточний елемент більш наступний елемент
+					if (array[i] > array[i + 1]) {
+						// Міняємо елементи місцями
+						swap(array, i, i + 1)
+						// При обміні додаємо 1 до кількості сортувань
+						exchangesCount++
+					}
+				}
+				rightIndex--
+				// Цикл по масиву справа наліво
+				for (let i = rightIndex; i > leftIndex; i--) {
+					// Умова коли поточний елемент меньш ніж наступний елемент
+					if (array[i] < array[i - 1]) {
+						// Міняємо елементи місцями
+						swap(array, i, i - 1)
+						// При обміні додаємо 1 до кількості сортувань
+						exchangesCount++
+					}
+				}
+				leftIndex++
+			}
+			return exchangesCount
+		}
+		function swap(array, i, j) {
+			let temp = array[i]
+			array[i] = array[j]
+			array[j] = temp
+
+		}
+		// Визов функції та передача параметрів
+		let randomArray = getRandomArray(30, 1, 100)
+		let countOfExange = getCoctailSort(randomArray)
+
+		document.write(`Сгенерований та відсортований масив: ${randomArray} <br><br>`)
+		document.write("Кількість сортувань: ", countOfExange)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

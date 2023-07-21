@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком. Тобто кожного разу після обміну елементів вивести поточний стан масиву на екран.
+
+		// ==================================================
+		function getRandomArray(length, min, max) {
+			// Змінна для створення масиву
+			let randomArray = []
+			// Цикл на довжину рядків
+			for (let i = 0; i < length; i++) {
+				// Додаємо випадкові значення у масив рядків
+				randomArray.push(Math.floor(Math.random() * (max - min + 1)) + min)
+			}
+			return randomArray
+		}
+		// Функція для обчислення кількості сортувань
+		function bubbleSort(array) {
+			// Змінна для переставлення елементів
+			let swapped
+			// Змінна для кількості сортувань
+			let exchangesCount = 0
+			// Цикл для сортування 
+			do {
+				// Робити доки є зміни
+				swapped = false
+				// Цикл на довжину масиву
+				for (let i = 1; i < array.length; i++) {
+					// Умова порівняння попередньго значення с  поточним
+					if (array[i - 1] > array[i]) {
+						// Зміння для перестановки елементів
+						let temp = array[i - 1]
+						// Зміна елементів місцями
+						array[i - 1] = array[i]
+						array[i] = temp
+						swapped = true
+						// Якщо відбулась перестановка додаємо у змінну кількості сортувань 1
+						exchangesCount++
+						// Вивод таблиці після кожного обміну покроково
+						document.write(`Шаг номер: ${exchangesCount}`)
+						document.write(`<table class="block-task__table" border="2px">`)
+						for (let j = 0; j < randomArray.length; j++) {
+							document.write("<tr><td>" + randomArray[j] + "</td></tr>")
+
+						}
+						document.write("</table>")
+					}
+				}
+				// while при swapped = true повертає у начало циклу
+			} while (swapped)
+		}
+
+		// Визов функції та передача параметрів
+		let randomArray = getRandomArray(7, 1, 15)
+
+		// Виводимо дані у вигляді таблиці
+		document.write("Базовий масив:")
+		document.write(`<table class="block-task__table" border="2px">`)
+		for (let j = 0; j < randomArray.length; j++) {
+			document.write("<tr><td>" + randomArray[j] + "</td></tr>")
+		}
+		document.write("</table>")
+		console.log("Sorting array using bubble sort:")
+		bubbleSort(randomArray)
+		document.write("Заключний шаг:")
+		document.write(`<table class="block-task__table" border="2px">`)
+		for (let j = 0; j < randomArray.length; j++) {
+			document.write("<tr><td>" + randomArray[j] + "</td></tr>")
+		}
+		document.write("</table>")
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

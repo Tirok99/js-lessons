@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою
+
+		// ==================================================
+		// Функція для створення масиву з рандомними числами
+		function getRandomArray(length, min, max) {
+			// Змінна для створення масиву
+			let randomArray = []
+			// Цикл на довжину рядків
+			for (let i = 0; i < length; i++) {
+				// Додаємо випадкові значення у масив рядків
+				randomArray.push(Math.floor(Math.random() * (max - min + 1)) + min)
+			}
+			return randomArray
+		}
+		// Функція для обчислення кількості сортувань
+		function bubbleSort(array) {
+			// Змінна для переставлення елементів
+			let swapped
+			// Змінна для кількості сортувань
+			let exchangesCount = 0
+			// Цикл для сортування 
+			do {
+				// Робити доки є зміни
+				swapped = false
+				// Цикл на довжину масиву
+				for (let j = 1; j < array.length; j++) {
+					// Умова порівняння попередньго значення с  поточним
+					if (array[j - 1] > array[j]) {
+						// Зміння для перестановки елементів
+						let temp = array[j - 1]
+						// Зміна елементів місцями
+						array[j - 1] = array[j]
+						array[j] = temp
+						swapped = true
+						// Якщо відбулась перестановка додаємо у змінну кількості сортувань 1
+						exchangesCount++
+					}
+				}
+				// while при swapped = true повертає у начало циклу
+			} while (swapped)
+			// Повертаємо кількість сортувань
+			return exchangesCount
+		}
+		// Визов функції та передача параметрів
+		let randomArray = getRandomArray(30, 1, 100)
+		let exchangeCount = bubbleSort(randomArray)
+
+		document.write(`Сгенерований та відсортований масив: ${randomArray} <br><br>`)
+		document.write("Кількість сортувань: ", exchangeCount)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+
+
+		// ==================================================
+		// Функція для бінарного пошуку імені
+		function binarySearch(array, name) {
+			// Початок масива
+			let left = 0
+			// Кінець масива
+			let right = array.length - 1
+			// Цикл доти початок та кінець не зровняються
+			while (left <= right) {
+				// Обчислення середини масиву
+				const middleArrey = Math.floor((left + right) / 2)
+				// Перевіряємо умову
+				// значення середини дорівнює елементу
+				if (array[middleArrey] === name) {
+					// Повертаємо значення середини
+					return middleArrey
+					// значення середини меньше ніж елемент
+				} if (array[middleArrey] < name) {
+					// Зміщщення вправо
+					left = middleArrey + 1
+					// значення середини більше ніж елемент
+				} if (array[middleArrey] > name) {
+					// Зміщення вліво
+					right = middleArrey - 1
+				}
+			}
+			// Повертаємо -1, якщо не знайдено
+			return -1
+		}
+
+		let names = ["John", "Anatoly", "Anna", "Oleg", "Olga", "Elen", "Paul", "Mark", "Dmytro", "Linda", "Antony", "Luisa"]
+		document.write(`Масив імен: ${names.join(", ")} <br><br>`)
+
+		// Сортування по імені
+		let namesSort = names.sort()
+		document.write(`Масив імен відсортований: ${namesSort.join(", ")} <br><br>`)
+		// Виводимо індекс знайденного елемента
+		let targetIndex = binarySearch(names, "Olga")
+		if (targetIndex !== -1) {
+			document.write(` Ім’я "Olga" під індексом:  ${targetIndex}`)
+		} else {
+			document.write('Ім’я "Olga" не знайдено.')
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
