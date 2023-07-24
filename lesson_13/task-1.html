@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Нехай x0 = 1, xi = xi-1 +2i, де i =1,2,... . Визначити x10 . Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+
+		// ==================================================
+		function getRecursiveX(i) {
+			// x0 = 1
+			if (i === 0) {
+				return 1
+			}
+			return getRecursiveX(i - 1) + 2 * i
+		}
+		// Визов функції та передача параметрів
+		let x10Recursive = getRecursiveX(10)
+
+		document.write(`Використання рекурсивного алгоритму: ${x10Recursive} <br>`)
+
+
+		function getNonRecursiveX(i) {
+			let x = 1
+			for (let j = 1; j <= i; j++) {
+				x = x + 2 * j
+			}
+			return x
+		}
+
+		let x10Nonrecursive = getNonRecursiveX(10)
+
+		document.write(`Використання нерекурсивного алгоритму:${x10Nonrecursive}`)
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

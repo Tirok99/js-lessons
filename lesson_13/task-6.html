@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-6</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Через 20 секунд перейти на сайт ukr.net. Для цього через 20 секунд після відкриття треба виконати команду window.location.href = 'https://www.ukr.net/'
+
+		// ==================================================
+		let userUrl = 'https://www.ukr.net/';
+		function redirectToSite(website) {
+			setTimeout(() => {
+				// Відкриття у новому окні браузера
+				window.open(website, '_blank')
+			}, 20000)
+		}
+		let siteRedirect = redirectToSite(userUrl)
+		document.write(`Вас буде перенаправлено на сайт:${userUrl}`)
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Реалізувати бінарний пошук (розглядали на попередніх уроках) з використанням рекурсивного алгоритму. array = [2, 4, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 20]
+
+		// ==================================================
+		function binarySearchRecursive(arr, target, start, end) {
+			if (start > end) {
+				return -1
+			}
+			// Знахідимо середнє значення масиву
+			const middle = Math.floor((start + end) / 2)
+			if (arr[middle] === target) {
+				// Значення знайдене
+				return middle;
+			} else if (arr[middle] > target) {
+				// Пошук вліво
+				return binarySearchRecursive(arr, target, start, middle - 1)
+			} else {
+				// Пошук вправо
+				return binarySearchRecursive(arr, target, middle + 1, end)
+			}
+		}
+
+		let array = [2, 4, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 18, 20]
+		let target = parseInt(prompt('Введіть число для пошуку від 1 до 20:'))
+		let index = binarySearchRecursive(array, target, 0, array.length - 1)
+
+		// Умова пошуку
+		// Якщо не -1 то показуємо результат
+		if (index !== -1) {
+			document.write(`Число ${target} знайдено під індексом ${index}`)
+			// Інакше не знайдено
+		}
+		else {
+			document.write(`Число ${target} не знайдено`)
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

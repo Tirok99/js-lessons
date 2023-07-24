@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка.
+
+
+		// ==================================================
+		function additionSimulator() {
+			// Задаємо інтервал появи завдань
+			setInterval(() => {
+				// Генерація 2-х випадкових чисел
+				const number1 = Math.floor(Math.random() * 10)
+				const number2 = Math.floor(Math.random() * 10)
+
+				// Обчислення сгенерованих чисел
+				let correctAnswer = number1 + number2
+
+				// Питання з явним приведенням к числу
+				let userAnswer = Number(prompt(`What is ${number1} + ${number2}?`))
+
+				// Перевірка відповіді
+				if (userAnswer === correctAnswer) {
+					alert('Вірно!')
+				} else {
+					alert(`Невірно. Відповідь: ${correctAnswer}.`)
+				}
+				// Кожні 10 секунд
+			}, 10000)
+		}
+
+		// Start the addition simulator
+		additionSimulator()
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
