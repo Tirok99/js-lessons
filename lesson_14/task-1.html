@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Описати масив об’єктів – сайтів розроблених компанією з такими властивостями
+		// ----- Властивості ------
+		// - назва компанії на час розробки (назву періодично змінюють)
+		// - власник компанії
+		// - споснсори (масив спонсорів)
+		// * прізвище спонсора
+		// * ім’я спонсора
+		// * сума вкладень спонсора
+		// - рік випуску
+		// - вартість сайту
+
+		// Знайти:
+		// 1) загальну вартість усіх сайтів
+		// 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+		// 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+		// 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+		// 5) знайти рік, коли прибуток був найбільшим
+		// 6) упорядкувати список за спаданням прибутку
+		// 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+
+		// ==================================================
+
+		const sitesList = [
+			{
+				tempName: 'workName1',
+				owner: 'John',
+				sponsors: [
+					{
+						name: 'Sponsor1',
+						amount: 14000
+					},
+					{
+						name: 'Sponsor2',
+						amount: 9000
+					},
+					{
+						name: 'Sponsor3',
+						amount: 25000
+					},
+					{
+						name: 'Sponsor4',
+						amount: 80000
+					},
+					{
+						name: 'Sponsor5',
+						amount: 32000
+					},
+				],
+				yearReleased: 2000,
+				price: 88000,
+
+			},
+			{
+				tempName: 'workName2',
+				owner: 'Olga',
+				sponsors: [
+					{
+						name: 'Sponsor6',
+						amount: 130000
+					},
+					{
+						name: 'Sponsor7',
+						amount: 15000
+					},
+					{
+						name: 'Sponsor2',
+						amount: 580000
+					},
+					{
+						name: 'Sponsor9',
+						amount: 200000
+					},
+					{
+						name: 'Sponsor10',
+						amount: 75000
+					},
+				],
+				yearReleased: 2001,
+				price: 1000000,
+
+			},
+			{
+				tempName: 'workName3',
+				owner: 'Max',
+				sponsors: [
+					{
+						name: 'Sponsor1',
+						amount: 300000
+					},
+					{
+						name: 'Sponsor8',
+						amount: 500000
+					},
+					{
+						name: 'Sponsor3',
+						amount: 40000
+					},
+					{
+						name: 'Sponsor11',
+						amount: 30000
+					},
+					{
+						name: 'Sponsor12',
+						amount: 230000
+					},
+				],
+				yearReleased: 2011,
+				price: 1100000,
+			},
+		]
+		// 1) загальну вартість усіх сайтів
+		const totalPrice = sitesList.reduce((prevSum, site) =>
+			prevSum + site.price, 0)
+		document.write(`Загальна вартість усіх проектів: ${totalPrice} грн. <br><br>`)
+
+		// 2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+		const countDiapazonYeras = sitesList.filter((site) =>
+			site.yearReleased >= 2000 && site.yearReleased <= 2009).length
+		document.write(`Кількість проектів, що було зроблено між 2000 та 2009 рр.: ${countDiapazonYeras} <br><br>`)
+
+		// 3) кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+		const count100000 = sitesList.filter((site) =>
+			site.sponsors.some((sponsor) =>
+				sponsor.amount > 100000)).length
+		document.write(`Кількість проектів, де сума спонсорських вкладень була більшою за 100000: ${count100000} <br><br>`)
+
+		// 4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+		const allSponsors = sitesList.flatMap(site =>
+			site.sponsors.map(sponsor => sponsor.name));
+		document.write(`Загальний список спонсорів: ${allSponsors} <br><br>`)
+		// 5) знайти рік, коли прибуток був найбільшим
+		const maxProfitYear = sitesList.reduce(
+			(maxYear, site) => (site.price > maxYear.price ? site : maxYear),
+			sitesList[0]
+		).yearReleased
+		document.write(`Рік, коли прибуток був найбільшим: ${maxProfitYear} <br><br>`)
+		// 6) упорядкувати список за спаданням прибутку
+		const sortedList = sitesList.sort((a, b) => {
+			return b.price - a.price
+		})
+		console.log('sortedList')
+		document.write(`Список за спаданням прибутку: ${JSON.stringify(sortedList)} <br><br>`);
+		// 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+
+		const sitesBefore100000 = sitesList.filter(site => site.price < 100000);
+		const sitesOver100000 = sitesList.filter(site => site.price >= 100000);
+
+		document.write(`Список сайтов с ценой до 100000: ${JSON.stringify(sitesBefore100000)} <br><br>`)
+		console.log('sitesBefore100000')
+		document.write(`Список сайтов с ценой более 100000: ${JSON.stringify(sitesOver100000)} <br><br>`)
+		console.log('sitesOver100000')
+
+
+
+
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
