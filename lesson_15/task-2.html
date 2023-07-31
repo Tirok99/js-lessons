@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		//Створити об’єкт «Авто». 
+		// Авто		
+		// Поля(властивості)	Марка
+		// Розмір бака
+		// Кількість наявних літрів
+		// Кількість місць
+		// Кількість пасажирів
+		// Методи (дії)	Заправка на вказану кількість літрів
+		// Виведення кількості пасажирів
+		// Додавання пасажирів
+		// Висадка пасажирів
+
+
+		// ==================================================
+		class Auto {
+			constructor(brand, tankSize, availableLitres, fullSeatsCount, passengerCount) {
+				//властвості-характеристики
+				this.brand = brand
+				this.tankSize = tankSize
+				this.availableLitres = availableLitres
+				this.fullSeatsCount = fullSeatsCount
+				this.passengerCount = passengerCount
+			}
+			//  Методи:
+			// Визначення вільного місця у баку
+			availableFuel() {
+				return this.tankSize - this.availableLitres
+
+			}
+			// Заправка на вказану кількість літрів
+			refuel(litres) {
+				const accessLitres = this.availableFuel()
+				if (litres <= accessLitres) {
+					this.availableLitres += litres
+					document.write(`1) Ви заправили ${litres} літрів. У баку зараз ${this.availableLitres} літрів.<br> Доступно для заправки: ${auto.availableFuel()} літрів<br><br>`)
+				}
+				else {
+					document.write(`1) Ви не можете заправити ${litres} літрів. У баку вільне місце тільки для ${accessLitres} літрів.<br> `)
+				}
+				return accessLitres
+			}
+			// Виведення кількості пасажирів
+			getPassangersCount() {
+				document.write(`2) Всьго у авто зараз ${this.passengerCount} пасажирів(а)) <br><br>`)
+			}
+
+			// Визначення вільних місць
+			availablePlace() {
+				return this.fullSeatsCount - this.passengerCount
+
+			}
+			// Додавання пасажирів
+			boarding(passenger) {
+				const accessPlaces = this.availablePlace()
+				if (passenger <= accessPlaces) {
+					this.passengerCount += passenger
+					document.write(`3) Ви посадили у авто ${passenger} пасажирів(а). Кількість заянятих місць: ${this.passengerCount}.<br> Залишилось доступних місць : ${this.availablePlace()}<br><br>`)
+				}
+				else {
+					document.write(`3) Ви не можете посадити ${passenger} пасажирів(а). У машині є тільки ${accessPlaces} вільних місць.<br> `)
+				}
+				return accessPlaces
+			}
+			// Висадка пасажирів
+			landing(leaveCount) {
+				if (leaveCount <= this.passengerCount) {
+					this.passengerCount -= leaveCount
+					document.write(`4) Ви висадили з авто ${leaveCount} пасажирів(а). У авто залишилось: ${this.passengerCount}пасажирів(а)<br>`)
+				}
+				else {
+					document.write(`4) Ви не можете висадити ${leaveCount} пасажирів(а). У машині зараз тільки ${this.passengerCount} пасажир(а).<br> `)
+				}
+
+			}
+		}
+		let auto = new Auto('Audi', 55, 40, 5, 3)
+		let fuelCount = parseInt(prompt("1.Введіть кількість літрів авто"))
+		let passangerAdded = parseInt(prompt("3.Введіть кількість пасажирів для посадки у авто"))
+		let passangerRemove = parseInt(prompt("4.Введіть кількість пасажирів для висадки з авто"))
+		auto.refuel(fuelCount)
+		auto.getPassangersCount()
+		auto.boarding(passangerAdded)
+		auto.landing(passangerRemove)
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

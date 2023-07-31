@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-0</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+		// Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+
+
+		// ==================================================
+		const object1 = {
+			numbers: [5, 10, 15, 20, 25],
+			getTotalSum: function () {
+				return this.numbers.reduce((sum, number) => sum + number, 0)
+			}
+		}
+		const object2 = {
+			numbers: [2, 1, 4, 3, 7, 6],
+			getProdNumbers: function () {
+				const min = Math.min(...this.numbers);
+				const max = Math.max(...this.numbers);
+				return this.numbers.reduce((prevNum, num) => {
+					if (num >= min && num <= max) {
+						return prevNum * num
+					} else {
+						return prevNum
+					}
+				}, 1)
+			}
+		}
+		const totalSum = object1.getTotalSum.call(object1)
+		const product1 = object2.getProdNumbers.call(object2)
+
+		document.write(`Загальна сума чисел : ${totalSum}<br>`)
+		document.write(`Загальна сума добутку чисел : ${product1}`)
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

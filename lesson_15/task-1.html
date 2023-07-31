@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+		// Тир		
+		// Поля(властивості)	Масив, у якому зберігається поле з зайцями
+		// Методи (дії)	Метод пострілу (задається позиція пострілу)
+		// Виведення ігрового поля
+		// ==================================================
+		class Tir {
+			constructor(rows, cols) {
+				this.rows = rows
+				this.cols = cols
+				this.field = this.createField()
+			}
+
+			getRandomZeroOrOne() {
+				return Math.random() < 0.5 ? 0 : 1
+			}
+			createField() {
+				const fieldX = []
+				for (let i = 0; i < this.rows; i++) {
+					const fieldY = []
+					for (let j = 0; j < this.cols; j++) {
+						fieldY.push(this.getRandomZeroOrOne())
+					}
+					fieldX.push(fieldY)
+				}
+				return fieldX
+			}
+			shot(row, col) {
+				const userShotX = parseInt(prompt("Постріл. Введіть номер рядка від 1 до 5"));
+				const userShotY = parseInt(prompt("Постріл. Введіть номер стовбця від 1 до 5"));
+				if (this.field[userShotX - 1][userShotY - 1] === 0) {
+					return document.write(`Ви поціліли у точку: рядок -${userShotX}, стовбець -${userShotY}. На жаль ви не попали<br><br>`)
+
+				}
+				if (this.field[userShotX - 1][userShotY - 1] === 1) {
+					return document.write(`Ви поціліли у точку: рядок -${userShotX},стовбець -${userShotY}. Поздоровляємо. Ви влучили в зайця.<br><br>`)
+				}
+			}
+
+		}
+		function generateTable(data) {
+			let table = '<table class="block-task__table" border="2px">'
+			// Цикл для створення таблиці
+			for (let i = 0; i < data.length; i++) {
+				table += `<tr></th>`
+				for (let j = 0; j < data[i].length; j++) {
+					table += `<td>${data[i][j]}</td>`
+				}
+				table += "</tr>"
+			}
+			table += "</table>"
+			return table
+		}
+
+		// Визов функції та передача параметрів
+		const tir = new Tir(5, 5)
+		const fieldTable = generateTable(tir.field)
+		// //Вивод на сторінку HTML
+		document.write(fieldTable)
+		tir.shot()
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

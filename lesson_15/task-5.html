@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Розробити клас «Керівник танців»
+		// 1) Поля
+		// а.Масив імен хлопців
+		// б.Масив імен дівчат
+		// 2) Методи
+		// а.Метод випадкового вибору імені хлопця
+		// б.Метод випадкового вибору імені дівчини
+		// в.Метод виведення пари для танців
+		// г.Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців.
+		// ==================================================
+
+		class danceLider {
+			constructor(boysNamesArray, girlsNamesArray) {
+				this.boysNamesArray = boysNamesArray
+				this.girlsNamesArray = girlsNamesArray
+			}
+			getRandomBoy() {
+				return this.boysNamesArray[Math.floor(Math.random() * this.boysNamesArray.length)]
+			}
+			getRandomGirl() {
+				return this.girlsNamesArray[Math.floor(Math.random() * this.girlsNamesArray.length)]
+			}
+			getDanceDuet() {
+				const randomBoy = this.getRandomBoy()
+				const randomGirl = this.getRandomGirl()
+				return `${randomBoy} ${randomGirl}`
+			}
+			run() {
+				setInterval(() => {
+					console.log(this)
+					alert(this.getDanceDuet())
+				}, 5000)
+			}
+		}
+		const boysNames = ['Victor', 'Bogdan', 'Ivan', 'Sergiy', 'Maksim']
+		const girlsNames = ['Natalya', 'Iryna', 'Masha', 'Olena', 'Dasha']
+		const danceDuet = new danceLider(boysNames, girlsNames)
+		danceDuet.run()
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
