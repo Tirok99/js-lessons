@@ -20,10 +20,8 @@
 			}
 		}
 		const object2 = {
-			numbers: [2, 1, 4, 3, 7, 6],
-			getProdNumbers: function () {
-				const min = Math.min(...this.numbers);
-				const max = Math.max(...this.numbers);
+			numbers: [21, 11, 41, 23, 17, 16],
+			getProdNumbers: function (min, max) {
 				return this.numbers.reduce((prevNum, num) => {
 					if (num >= min && num <= max) {
 						return prevNum * num
@@ -33,11 +31,16 @@
 				}, 1)
 			}
 		}
-		const totalSum = object1.getTotalSum.call(object1)
-		const product1 = object2.getProdNumbers.call(object2)
+		const totalSum = object1.getTotalSum()
+		const totalSum1 = object1.getTotalSum.call(object2)
 
-		document.write(`Загальна сума чисел : ${totalSum}<br>`)
-		document.write(`Загальна сума добутку чисел : ${product1}`)
+		const product2 = object2.getProdNumbers(11, 21)
+		const product1 = object2.getProdNumbers.call(object1, 5, 15)
+
+		document.write(`Загальна сума чисел object1 : ${totalSum}<br>`)
+		document.write(`Загальна сума чисел  object2: ${totalSum1}<br>`)
+		document.write(`Загальна сума добутку чисел object1: ${product1}<br>`)
+		document.write(`Загальна сума добутку чисел object2: ${product2}<br>`)
 
 
 
