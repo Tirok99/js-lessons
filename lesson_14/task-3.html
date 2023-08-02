@@ -74,14 +74,15 @@
 		document.write(`Кількість товарів, які доступні (sell_status:"available"): ${availableProducts} <br><br>`)
 		// 4) сформувати новий список об”єктів тільки доступних для продажу товарів, які
 		// міститимуть тільки ідентифікатор товару (id), нову ціну (price), стару ціну (old_price), та ціну у доларах (usd_price)
-		const availableProductsUSD = dataList.reduce((count, element) => {
-			if (element.sell_status === "available" && element.id > '0' && element.old_price > '0' && element.usd_price > '0') {
-				return count + 1;
-			} else {
-				return count;
-			}
-		}, 0);
-		document.write(`Кількість товарів  доступних для продажу товарів, які міститимуть тільки ідентифікатор товару (id), нову ціну (price), стару ціну (old_price), та ціну у доларах (usd_price): ${availableProductsUSD} <br><br>`)
+		let availableProductsList = dataList.filter((product) => product.sell_status === 'available').map((product) => ({
+			id: product.id,
+			price: product.price,
+			old_price: product.old_price,
+			usd_price: product.usd_price
+		}))
+
+		document.write(`Об""єкти з доступними для продажу товарами, які міститимуть поля (ідентифікатор товару (id), нову ціну (price), стару ціну (old_price), та ціну у доларах (usd_price)):<br><br> ${JSON.stringify(availableProductsList)} <br><br>`)
+		console.log(availableProductsList);
 
 	</script>
 </head>
