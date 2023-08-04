@@ -152,19 +152,14 @@
 		document.write(`Список за спаданням прибутку: ${JSON.stringify(sortedList)} <br><br>`);
 		// 7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
 
-		const sitesBefore100000 = []
-		const sitesOver100000 = []
-		for (const site of sitesList) {
-			if (site.price < 100000) {
-				sitesBefore100000.push(site)
-			} else {
-				sitesOver100000.push(site)
-			}
-		}
-		document.write(`Список сайтов с ценой до 100000: ${JSON.stringify(sitesBefore100000)} <br><br>`)
-		console.log('sitesBefore100000')
-		document.write(`Список сайтов с ценой более 100000: ${JSON.stringify(sitesOver100000)} <br><br>`)
-		console.log('sitesOver100000')
+		let sitesListLess10000 = sitesList.filter((site) => site.price < 100000).map((site) => JSON.parse(JSON.stringify(site)))
+		let sitesListGreater10000 = sitesList.filter((site) => site.price > 100000).map((site) => JSON.parse(JSON.stringify(site)))
+
+
+		document.write(`Список сайтов с ценой до 100000: ${JSON.stringify(sitesListLess10000)} <br><br>`)
+		console.log('sitesListLess10000')
+		document.write(`Список сайтов с ценой более 100000: ${JSON.stringify(sitesListGreater10000)} <br><br>`)
+		console.log('sitesListGreater10000')
 
 
 
