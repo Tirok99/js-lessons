@@ -12,18 +12,22 @@
 
 		// ==================================================
 
-		let userDate = {
+			let userDate = {
 			day: 23,
 			month: 5,
 			year: 2023,
-		}
-		function getShowYear({ year }, userMounths) {
-			return (year - 1 + (userMounths / 12)) + 1
+		};
+
+		function getShowYear(startDate, userMonths) {
+			const currentYear = startDate.year;
+			return (currentYear - 1 + (userMonths / 12)) + 1;
 		}
 
-		const userMounths = parseInt(prompt('Введіть кількість місяців'))
-		const showYear = getShowYear(userDate, userMounths)
-		document.write(`Через ${userMounths} місяців буде ${showYear.toFixed(0)} рік`)
+		const userMonths = parseInt(prompt('Введіть кількість місяців'));
+		const showYear = getShowYear(userDate, userMonths);
+
+		document.write(`Через ${userMonths} місяців буде ${showYear.toFixed(0)} рік`);
+
 
 	</script>
 </head>
