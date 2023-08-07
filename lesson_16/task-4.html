@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Створити клас TBankomat, який моделює роботу банкомата.
+		// Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень.
+		// Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+		// ==================================================
+		class TBankomat {
+			#banknotes
+			constructor(nominals) {
+				this.Banknotes = nominals
+			}
+			get Banknotes() {
+				return this.#banknotes
+			}
+			set Banknotes(newNominals) {
+				this.#banknotes = newNominals
+			}
+			// Додання купюр
+			addBanknotes(denomination, quantity) {
+				if (this.#banknotes.hasOwnProperty(denomination)) {
+					this.#banknotes[denomination] += quantity
+				}
+			}
+			// Пошук максимальної суми
+			getMaxAmount() {
+				let maxAmount = 0
+				for (const denomination in this.#banknotes) {
+					maxAmount += denomination * this.#banknotes[denomination]
+				}
+				return maxAmount
+
+			}
+			// Пошук мінімальної суми
+			getMinAmount() {
+				let minAmount = Infinity
+				for (const denomination in this.#banknotes) {
+					if (this.#banknotes[denomination] > 0 && Number(denomination) < minAmount) {
+						minAmount = denomination
+
+					}
+				}
+				return minAmount === Infinity ? null : minAmount
+
+			}
+			getWithdrawAmount(amount) {
+				let remainingAmount = amount
+				const result = {}
+
+				for (const denomination in this.#banknotes) {
+					if (this.#banknotes.hasOwnProperty(denomination)) {
+						const denominationValue = parseInt(denomination)
+						const notesToWithdraw = Math.min(this.#banknotes[denomination], Math.floor(remainingAmount / denominationValue));
+						remainingAmount -= notesToWithdraw * denominationValue
+
+						if (notesToWithdraw > 0) {
+							result[denomination] = notesToWithdraw
+							this.#banknotes[denomination] -= notesToWithdraw
+						}
+						if (remainingAmount === 0) {
+							break
+						}
+					}
+				}
+				if (remainingAmount === 0) {
+					return result
+				}
+			}
+
+		}
+		let initNominals = {
+			5: 0,
+			10: 0,
+			20: 0,
+			50: 0,
+			100: 0,
+			200: 0
+		};
+		const bankomat = new TBankomat(initNominals)
+
+		bankomat.addBanknotes(5, 18)
+		bankomat.addBanknotes(10, 30)
+		bankomat.addBanknotes(20, 39)
+		bankomat.addBanknotes(50, 64)
+		bankomat.addBanknotes(100, 112)
+		bankomat.addBanknotes(200, 61)
+
+		// Отримання обїєкту
+		const banknotes = bankomat.Banknotes
+		console.log("Перелік купюр:", banknotes)
+
+		//  Пошук максимальної суми
+		const maxAmount = bankomat.getMaxAmount()
+		console.log("Максимальна доступна сума:", maxAmount)
+
+		// Пошук мінімальної суми
+		const minAmount = bankomat.getMinAmount()
+		console.log("Мінімальна доступна сума:", minAmount)
+
+		// Метод зняття суми
+		const amountToWithdraw = parseInt(prompt("Введіть суму для зняття"));
+		const withdrawalResult = bankomat.getWithdrawAmount(amountToWithdraw)
+		if (withdrawalResult) {
+			console.log(`Зняття ${amountToWithdraw} грн. пройшло успішно:`, withdrawalResult)
+		} else {
+			console.log("Неможливо сняти вказану суму")
+		}
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

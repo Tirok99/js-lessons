@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		//Створити клас TMoney для роботи з грошовими сумами.
+		// Сума повинна зберігатися у вигляді доларового еквіваленту.
+		// Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.
+
+		// ==================================================
+		class Money {
+			#dollarRate
+			#dollarBalance
+			constructor(initGRNBalance, dollarRate) {
+				this.Rate = dollarRate
+				// this.dollarBalance = this.Balance / this.Rate
+				this.Balance = initGRNBalance
+			}
+			get Balance() {
+				return this.#dollarBalance * this.Rate
+			}
+			set Balance(grnSum) {
+				if (grnSum < 0)
+					throw new Error(
+						'Помилка. Початкова сума не може бути меншою за нуль'
+					)
+				this.#dollarBalance = grnSum / this.Rate
+			}
+			get Rate() {
+				return this.#dollarRate
+			}
+			set Rate(newValue) {
+				if (newValue < 0)
+					throw new Error('Сума попвонення має бути більшою за нуль')
+				this.#dollarRate = newValue
+			}
+
+			// додвання грошової маси
+			addMoney(grnSum) {
+				if (grnSum < 0)
+					throw new Error('Сума попвонення має бути більшою за нуль')
+				this.Balance += grnSum
+			}
+			// вилучення грошової маси
+			getMoney(grnSum) {
+				if (grnSum < 0)
+					throw new Error('Сума попвонення має бути більшою за нуль')
+				if (grnSum > this.Balance)
+					throw new Error('Немає стільки грошей на рахунку')
+				this.Balance -= grnSum
+			}
+			// курсу долара, при якому сума у гривнях збільшиться на 100
+			getTarget100Rate() {
+				return (this.Balance + 100) / this.#dollarBalance
+			}
+			toString() {
+				return `Актуальний курс долара: ${this.Rate} грн.<br>На рахунку (гривня): ${this.Balance.toFixed(2)} грн.<br> На рахунку (USD): ${this.#dollarBalance.toFixed(2)}<br><br>`
+			}
+		}
+
+
+		let money = new Money(0, 36)
+		let addSum = parseInt(prompt("Введіть суму для додавання"))
+		let remsum = parseInt(prompt("Введіть суму для вилучення"))
+
+		money.addMoney(addSum)
+		document.write(`Додано: ${addSum} грн.<br>`)
+		document.write(money)
+		document.write('<br>')
+		money.getMoney(remsum)
+		document.write(`Вилучено: ${remsum} грн.<br>`)
+		document.write(money)
+
+
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
