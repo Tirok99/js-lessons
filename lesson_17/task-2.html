@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		//Створити службове авто (водій, марка, номер).
+		// Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.
+
+		// ==================================================
+		class CompanyCar {
+			constructor(driver, brand, licensePlate) {
+				this.driver = driver
+				this.brand = brand
+				this.licensePlate = licensePlate
+			}
+			// 
+			static getInstance(driver, make, licensePlate) {
+				if (!CompanyCar.instance) {
+					CompanyCar.instance = new CompanyCar(driver, make, licensePlate);
+				}
+				return CompanyCar.instance
+			}
+			toString() {
+				return `Водій: ${this.driver}, Марка авто: ${this.brand}, Номерний знак: ${this.licensePlate}<br><br>`
+			}
+		}
+
+		const companyCar = new CompanyCar("Jhon Smith", "Honda", "АА0001АА")
+		console.log(companyCar)
+		document.write(companyCar.toString())
+
+		const car2 = new CompanyCar("Max Black", "Toyota", "ВІ0002ВІ");
+		// Перевірка зміни даних
+		console.log(companyCar === car2)
+		console.log(companyCar)
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

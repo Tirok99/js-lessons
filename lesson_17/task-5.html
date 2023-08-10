@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно генеруються числа, які треба перемножати), AddChecker (клас для перевірки додавання - рандомно генеруються числа у заданому діапазоні, які треба додавати). Обидва класи надсилають результати тестування об'єкту класу Hystory, який зберігає історію тестування у масиві у вигляді об'єктів
+		// Приклад.
+		// testsList= [
+		// {firstNum:1, secondNum:5,opration:’*’, userAnswer:7, correctAnswer:5},
+		// {firstNum:3, secondNum:4,opration:’+’, userAnswer:7, correctAnswer:7},
+		// ]
+		// Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля.
+		// Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування. Результати тестування додаються в об’єкт History. Зробити так, щоб об'єкт такого класу можна було створити тільки один. Коли зроблено ці N задач вивести усю історію на екран.
+		// ==================================================
+
+		class MultChecker {
+			constructor(userAnswer) {
+				this.firstNum = this.getRandomNum()
+				this.secondNum = this.getRandomNum()
+				this.operation = "*"
+				this.userAnswer = this.getUserAnswer()
+				this.correctAnswer = this.getMultiply()
+			}
+			getRandomNum() {
+				return Math.floor(Math.random() * 10) + 1
+			}
+			getMultiply() {
+				return this.firstNum * this.secondNum
+			}
+			getUserAnswer() {
+				const userAnswer = parseInt(prompt(`Введіть варіант відповіді ${this.firstNum} * ${this.secondNum}?`))
+				return userAnswer
+
+			}
+
+		}
+		class Addchecker {
+			constructor(userAnswer) {
+				this.firstNum = this.getRandomNum()
+				this.secondNum = this.getRandomNum()
+				this.operation = "+"
+				this.userAnswer = this.getUserAnswer()
+				this.correctAnswer = this.getAdd()
+			}
+			getRandomNum() {
+				return Math.floor(Math.random() * 100)
+			}
+			getAdd() {
+				return this.firstNum + this.secondNum
+			}
+			getUserAnswer() {
+				const userAnswer = parseInt(prompt(`Введіть варіант відповіді ${this.firstNum} + ${this.secondNum}?`))
+				return userAnswer
+
+			}
+		}
+		class Hisory {
+			constructor() {
+				this.answerList = []
+				this.testsList = []
+
+			}
+			addUserResult(answer) {
+				this.answerList.push(answer)
+			}
+			addTestResult(test) {
+				this.testsList.push(test)
+			}
+
+		}
+
+		class TestManager {
+			constructor() {
+				this.timer = null
+				this.counter = 0
+				this.correctAnswers = 0
+				this.testList = []
+				this.history = new Hisory()
+			}
+
+			startTimer(interval) {
+				this.timer = setInterval(() => {
+					const randomTest = Math.random() < 0.5 ? new MultChecker() : new Addchecker()
+					this.testList.push(randomTest)
+
+					const userAnswer = randomTest.userAnswer
+					const correctAnswer = randomTest.correctAnswer
+
+					if (userAnswer === correctAnswer) {
+						console.log(` Вірно! Ваша відповідь на завдання: ${userAnswer}. Системна відповідь: ${correctAnswer}.`)
+						this.history.addUserResult(userAnswer)
+						this.correctAnswers++
+					} else {
+						console.log(` Не вірно! Ваша відповідь на завдання: ${userAnswer}. Системна відповідь: ${correctAnswer}.`);
+					}
+
+					this.counter++
+
+					if (this.counter >= interval) {
+						clearInterval(this.timer)
+						console.log('Таймер завершено.')
+					}
+				}, 5000)
+			}
+		}
+
+		const test = new TestManager()
+		test.startTimer(4)
+
+
+		const multyChecker = new MultChecker()
+		const addChecker = new Addchecker()
+		const hisory = new Hisory()
+
+
+		hisory.addTestResult(multyChecker)
+		hisory.addTestResult(addChecker)
+
+		hisory.addUserResult(multyChecker.userAnswer)
+		hisory.addUserResult(addChecker.userAnswer)
+
+
+		console.log('multyChecker', multyChecker)
+
+		console.log('addChecker', addChecker)
+		console.log('hisory', hisory)
+		console.log('test', test)
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Особиста бібліотека.
+		// Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ автора, за видавництвом
+		// ==================================================
+		class Book {
+			constructor(initData) {
+				Object.assign(this, initData)
+			}
+
+		}
+		//-------------------
+		class Library {
+			constructor(initBookist) {
+				this.bookList = initBookist
+			}
+			addBook(book) {
+				this.bookList.push(book)
+			}
+
+			removeBook(bookTitle) {
+				this.bookList = this.bookList.filter(
+					(book) => book.title !== bookTitle
+				)
+			}
+			filterByTitle(bookTitle) {
+				return this.bookList.filter(
+					(book) => book.title === bookTitle
+				)
+			}
+			filterByAuthor(authorName) {
+				return this.bookList.filter(
+					(book) => book.auhtor.name === authorName
+				)
+			}
+			filterByManufacturer(publisherTitle) {
+				return this.bookList.filter(
+					(book) => book.publisher.name === publisherTitle
+				)
+
+			}
+		}
+
+		let bookList = [
+			new Book({
+				auhtor:
+				{
+					name: 'Author1',
+					birthYear: 1966,
+					shortDescription: 'Famous author',
+				},
+
+				title: 'BookName1',
+				genre: 'Fantasy',
+				publisher:
+				{
+					name: 'Bloomsbury',
+					registrationNumber: 123456,
+					establishmentYear: 2010
+				}
+			}),
+			new Book({
+				auhtor:
+				{
+					name: 'Author2',
+					birthYear: 1970,
+					shortDescription: 'Another famous author',
+				},
+				title: 'BookName2',
+				genre: 'Science fiction',
+				publisher:
+				{
+					name: 'Hachette',
+					registrationNumber: 654321,
+					establishmentYear: 2000
+				}
+			}),
+			new Book({
+				auhtor:
+				{
+					name: 'Author2',
+					birthYear: 1970,
+					shortDescription: 'Another famous author',
+				},
+				title: 'BookName2',
+				genre: 'Science fiction',
+				publisher:
+				{
+					name: 'HarperCollins',
+					registrationNumber: 987654,
+					establishmentYear: 1950
+				}
+			}),
+			new Book({
+				auhtor:
+				{
+					name: 'Author3',
+					birthYear: 1980,
+					shortDescription: 'Not famous author',
+				},
+				title: 'BookName3',
+				genre: 'Horror',
+				publisher:
+				{
+					name: 'HarperCollins',
+					registrationNumber: 987654,
+					establishmentYear: 1950
+				}
+			})
+		]
+
+		const library = new Library(bookList)
+		console.log('Початковий стан бібліотеки', library)
+		library.addBook(
+			new Book({
+				auhtor:
+				{
+					name: 'Author4',
+					birthYear: 1977,
+					shortDescription: 'Famous author',
+				},
+				title: 'BookName4',
+				genre: 'Detective',
+				publisher:
+				{
+					name: 'Penguin',
+					registrationNumber: 123456,
+					establishmentYear: 2001
+				}
+			})
+		)
+		console.log('Стан бібліотекі після додавання', library)
+		library.removeBook('BookName1')
+		console.log('Стан бібліотекі після видалення', library)
+
+		console.log('Фільтр по автору', library.filterByAuthor('Author4'))
+		console.log('Фільтр по назві', library.filterByTitle('BookName2'));
+		console.log('Фільтр по видавництву', library.filterByManufacturer('HarperCollins'))
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

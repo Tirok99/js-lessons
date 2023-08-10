@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Створити клас, що дозволяє виконувати такі операції над масивами:
+		// знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи).
+		// ==================================================
+		const findNum = 1
+		class ArrayOperations {
+			constructor() {
+				this.array = []
+			}
+			addNumbers(num) {
+				this.array.push(num)
+			}
+			//  метод знаходження кількості додатних чисел у масиві
+			getCountPositiveNumbers(array) {
+				let positiveCount = 0
+				for (const num of this.array) {
+					if (num > 0) {
+						positiveCount++
+					}
+				}
+				return positiveCount;
+			}
+			//  метод знаходження кількості від’ємних чисел у масиві
+			getCountNegativeNumbers(array) {
+				let negativeCount = 0
+				for (const num of this.array) {
+					if (num < 0) {
+						negativeCount++
+					}
+				}
+				return negativeCount
+			}
+
+			// метод знаходження кількості входжень деякого числа у масиві
+			getEntryNumbersCount(array, number) {
+				let count = 0
+				for (const num of array) {
+					if (num === number) {
+						count++
+					}
+				}
+				return count
+			}
+			toString() {
+				return `Масив чисел: ${this.array}.<br><br>Кількість додатних чисел: ${this.getCountPositiveNumbers(this.array)}.<br><br>Кількість від’ємних чисел: ${this.getCountNegativeNumbers(this.array)}.<br><br>Кількість входжень числа ${findNum}: ${this.getEntryNumbersCount(this.array, findNum)}.`
+
+			}
+		}
+
+		const arrayNumbers = [1, -2, 3, -4, 1, 1, 8, 5, -6, 11, 22, -13, 1, 1, 5]
+		const userArray = new ArrayOperations(arrayNumbers)
+		for (const num of arrayNumbers) {
+			userArray.addNumbers(num)
+		}
+		console.log(userArray)
+		// Знайти кількість додатних чисел у масив
+		console.log('Кількість позитивних чисел:', userArray.getCountPositiveNumbers(arrayNumbers))
+		document.write(userArray.toString())
+
+		// Знайти кількість від’ємних чисел у масив
+		console.log('Кількість негативних чисел:', userArray.getCountNegativeNumbers(arrayNumbers))
+
+		//  метод знаходження кількості входжень деякого числа у масиві
+		console.log(`Кількість входжень ${findNum} :`, userArray.getEntryNumbersCount(arrayNumbers, findNum))
+
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

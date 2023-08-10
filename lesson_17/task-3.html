@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Створити клас Нагадувач.
+		// Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. Зробити так, щоб неможна було зробити одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення без зупинки таймера
+		// ==================================================
+		class Reminder {
+			static #instance
+			#intervalId
+			#message
+			#sequenceNumber
+
+			constructor() {
+				if (Reminder.#instance) {
+					return Reminder.#instance
+				}
+
+				this.#intervalId = null
+				this.#message = ""
+				this.#sequenceNumber = 0
+
+				Reminder.#instance = this
+			}
+
+
+			#getMessage() {
+				return this.#message
+			}
+
+			#setMessage(newMessage) {
+				this.#message = newMessage
+			}
+
+			#getSequenceNumber() {
+				return this.#sequenceNumber
+			}
+
+			#setSequenceNumber(newSequenceNumber) {
+				this.#sequenceNumber = newSequenceNumber
+			}
+
+			#incrementSequenceNumber() {
+				this.#sequenceNumber++
+			}
+			startReminder(seconds, message) {
+				if (this.#intervalId) {
+					console.log("Нагадувач стартує.")
+					return
+				}
+
+				this.#setMessage(message)
+				this.#setSequenceNumber(0)
+
+				this.#intervalId = setInterval(() => {
+					this.#incrementSequenceNumber()
+					console.log(`Нагадування № ${this.#getSequenceNumber()}: ${this.#getMessage()}`);
+				}, seconds * 1000)
+			}
+			stopReminder() {
+				if (this.#intervalId) {
+					clearInterval(this.#intervalId)
+					this.#intervalId = null
+					console.log("Нагадувач зунинен.")
+				} else {
+					console.log("Немає активних нагадувачей.");
+				}
+			}
+
+			changeMessage(newMessage) {
+				if (this.#intervalId) {
+					this.#setMessage(newMessage);
+					console.log("Повідомлення змінено:", this.#getMessage())
+				} else {
+					console.log("Нагадування не запущено. Запустіть нагадування перед зміною повідомлення.")
+				}
+			}
+
+
+		}
+
+		const reminder = new Reminder()
+		// Старт нагадувача
+		reminder.startReminder(3, "Я нагадувач. Прийшла пора виконати справу")
+
+		// Спроба запустити другий нагадувач
+		reminder.startReminder(2, "Я нагадувач номер 2.")
+		// Зміна повідомлення через 15 сек
+		setTimeout(() => {
+			reminder.changeMessage("Вже час до іншої справи")
+		}, 15000)
+		// Зупинити нагадувач через 30 сек
+		setTimeout(() => {
+			reminder.stopReminder()
+		}, 30000)
+
+
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
