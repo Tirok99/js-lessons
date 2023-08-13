@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio buttons).
+		// Ціни визначте самі.
+		// Підрахувати загальну вартість.
+		// ==================================================
+
+		function getTripSum() {
+			const transportCheck = parseFloat(document.getElementById('transportList').value);
+			const foodCheck = document.getElementsByClassName('checkbox-block__input');
+			let foodListSum = 0;
+
+			for (let i = 0; i < foodCheck.length; i++) {
+				if (foodCheck[i].checked) {
+					foodListSum += parseFloat(foodCheck[i].value);
+				}
+			}
+
+			const guideCheck = document.querySelectorAll('.radio-block__input');
+			let guideListSum = 0;
+
+			for (let i = 0; i < guideCheck.length; i++) {
+				if (guideCheck[i].checked) {
+					guideListSum += parseFloat(guideCheck[i].value);
+				}
+			}
+
+			const totalSum = transportCheck + foodListSum + guideListSum;
+			document.getElementById('result').innerText = totalSum.toFixed(2);
+		}
+
+		window.onload = function () {
+			document.getElementById('score').onclick = getTripSum;
+		};
+
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Вартість подорожі</h1>
+					<div class="block-application__score-inputs">
+						<form action="" class="block-application__form">
+							<h3 class="block-application__subtitle">Етап номер 1</h3>
+							<div class="block-application__items">
+								<div class="block-application__item">Тип траспорту
+									<select name="" id="transportList" class="block-application__select">
+										<option value="0">--Select--</option>
+										<option value="1500">Авто</option>
+										<option value="350">Автобус</option>
+										<option value="2200">Літак</option>
+									</select>
+								</div>
+								<div class="block-application__item">Харчування
+									<div class="block-application__checkbox checkbox-block">
+										<input type="checkbox" name="food" id="food-01" value="400" class="checkbox-block__input">
+										<label for="food-01">Сніданок</label>
+									</div>
+									<div class="block-application__checkbox">
+										<input type="checkbox" name="food" id="food-02" value="600" class="checkbox-block__input">
+										<label for="food-02">Обід</label>
+									</div>
+									<div class="block-application__checkbox">
+										<input type="checkbox" name="food" id="food-03" value="500" class="checkbox-block__input">
+										<label for="food-03">Вечеря</label>
+									</div>
+								</div>
+								<div class="block-application__item"> Гід
+									<div class="block-application__radio radio-block">
+										<input type="radio" name="guide" id="guide-01" value="200" class="radio-block__input">
+										<label for="guide-01">Guide 1</label>
+									</div>
+									<div class="block-application__radio">
+										<input type="radio" name="guide" id="guide-02" value="300" class="radio-block__input">
+										<label for="guide-02">Guide 2</label>
+									</div>
+									<div class="block-application__radio">
+										<input type="radio" name="guide" id="guide-03" value="400" class="radio-block__input">
+										<label for="guide-03">Guide 3</label>
+									</div>
+								</div>
+							</div>
+						</form>
+						<form action="" class="block-application__form">
+							<h3 class="block-application__subtitle">Етап номер 2</h3>
+							<div class="block-application__items">
+								<div class="block-application__item">Тип траспорту
+									<select name="" id="transportList" class="block-application__select">
+										<option value="0">--Select--</option>
+										<option value="1500">Авто</option>
+										<option value="350">Автобус</option>
+										<option value="2200">Літак</option>
+									</select>
+								</div>
+								<div class="block-application__item">Харчування
+									<div class="block-application__checkbox checkbox-block">
+										<input type="checkbox" name="food" id="food-01" value="400" class="checkbox-block__input">
+										<label for="food-01">Сніданок</label>
+									</div>
+									<div class="block-application__checkbox">
+										<input type="checkbox" name="food" id="food-02" value="600" class="checkbox-block__input">
+										<label for="food-02">Обід</label>
+									</div>
+									<div class="block-application__checkbox">
+										<input type="checkbox" name="food" id="food-03" value="500" class="checkbox-block__input">
+										<label for="food-03">Вечеря</label>
+									</div>
+								</div>
+								<div class="block-application__item"> Гід
+									<div class="block-application__radio radio-block">
+										<input type="radio" name="guide" id="guide-01" value="200" class="radio-block__input">
+										<label for="guide-01">Guide 1</label>
+									</div>
+									<div class="block-application__radio">
+										<input type="radio" name="guide" id="guide-02" value="300" class="radio-block__input">
+										<label for="guide-02">Guide 2</label>
+									</div>
+									<div class="block-application__radio">
+										<input type="radio" name="guide" id="guide-03" value="400" class="radio-block__input">
+										<label for="guide-03">Guide 3</label>
+									</div>
+								</div>
+							</div>
+						</form>
+						<form action="" class="block-application__form">
+							<h3 class="block-application__subtitle">Етап номер 3</h3>
+							<div class="block-application__items">
+								<div class="block-application__item">Тип траспорту
+									<select name="" id="transportList" class="block-application__select">
+										<option value="0">--Select--</option>
+										<option value="1500">Авто</option>
+										<option value="350">Автобус</option>
+										<option value="2200">Літак</option>
+									</select>
+								</div>
+								<div class="block-application__item">Харчування
+									<div class="block-application__checkbox checkbox-block">
+										<input type="checkbox" name="food" id="food-01" value="400" class="checkbox-block__input">
+										<label for="food-01">Сніданок</label>
+									</div>
+									<div class="block-application__checkbox">
+										<input type="checkbox" name="food" id="food-02" value="600" class="checkbox-block__input">
+										<label for="food-02">Обід</label>
+									</div>
+									<div class="block-application__checkbox">
+										<input type="checkbox" name="food" id="food-03" value="500" class="checkbox-block__input">
+										<label for="food-03">Вечеря</label>
+									</div>
+								</div>
+								<div class="block-application__item"> Гід
+									<div class="block-application__radio radio-block">
+										<input type="radio" name="guide" id="guide-01" value="200" class="radio-block__input">
+										<label for="guide-01">Guide 1</label>
+									</div>
+									<div class="block-application__radio">
+										<input type="radio" name="guide" id="guide-02" value="300" class="radio-block__input">
+										<label for="guide-02">Guide 2</label>
+									</div>
+									<div class="block-application__radio">
+										<input type="radio" name="guide" id="guide-03" value="400" class="radio-block__input">
+										<label for="guide-03">Guide 3</label>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="block-application__result">
+						<button type="button" id="score" class="block-application__button">Розрахунок</button>
+						<div>Загальна вартість : <span id="result"></span></div>
+
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

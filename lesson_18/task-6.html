@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-6</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+		// ==================================================
+
+		function getCreateTable() {
+			const scoreCount = parseInt(document.getElementById('priceNum').value)
+			for (let i = 0; i < scoreCount; i++) {
+				const inputScore = document.createElement('input')
+				inputScore.type = 'number'
+				inputScore.className = 'block-application__input-score'
+				inputScore.placeholder = 'Від 1 до 12'
+				inputScore.max = '12'
+				document.querySelector('.block-application__score-inputs').append(inputScore)
+			}
+		}
+
+		function getSum() {
+			const inputsCount = document.querySelectorAll('.block-application__input-score')
+			let sum = 0
+			for (const input of inputsCount) {
+				sum += parseInt(input.value)
+			}
+			let average = sum / inputsCount.length
+
+			const resLabel = document.createElement('label')
+			resLabel.className = 'block-application__label'
+			resLabel.innerText = 'Середнє значення:'
+			resLabel.for = 'result'
+			document.querySelector('.block-application__items').append(resLabel)
+			const result = document.createElement('input')
+			result.type = 'number'
+			result.className = 'block-application__input'
+			result.id = 'result'
+			result.disabled
+			document.querySelector('.block-application__items').append(result)
+			document.getElementById('result').value = average
+
+		}
+		window.onload = function () {
+			document.getElementById('viewTable').onclick = getCreateTable
+			document.getElementById('btnSum').onclick = getSum
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Таблиця значень</h1>
+					<form action="" class="block-application__form">
+						<div class="block-application__items block-application__items_flex">
+							<div class="block-application__item">
+								<label for="priceNum" class="block-application__label">Price Number</label>
+								<input type="number" name="" id="priceNum" class="block-application__input" placeholder="0">
+							</div>
+							<div class="block-application__item buttons">
+								<button type="button" id="viewTable" class="block-application__button">Get table</button>
+							</div>
+							<div class="block-application__score-inputs"></div>
+							<button type="button" id="btnSum" class="block-application__button">Get sum</button>
+							<button type="reset" class="block-application__button">Скинути</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Розробити калькулятор
+		// ==================================================
+		function calcSum() {
+			const firstNum = parseInt(document.getElementById('ftNum').value)
+			const secondNum = parseInt(document.getElementById('secNum').value)
+			const sum = firstNum + secondNum
+			document.getElementById('result').value = sum
+		}
+		function calcSubtract() {
+			const firstNum = parseInt(document.getElementById('ftNum').value)
+			const secondNum = parseInt(document.getElementById('secNum').value)
+			const subtraction = firstNum - secondNum
+			document.getElementById('result').value = subtraction
+		}
+		function calcProd() {
+			const firstNum = parseInt(document.getElementById('ftNum').value)
+			const secondNum = parseInt(document.getElementById('secNum').value)
+			const multyple = firstNum * secondNum
+			document.getElementById('result').value = multyple
+		}
+		function calcDevide() {
+			const firstNum = parseInt(document.getElementById('ftNum').value)
+			const secondNum = parseInt(document.getElementById('secNum').value)
+			const divide = firstNum / secondNum
+			document.getElementById('result').value = divide.toFixed(2)
+		}
+		window.onload = function () {
+			document.getElementById('btnSum').onclick = calcSum
+			document.getElementById('btnDiff').onclick = calcSubtract
+			document.getElementById('btnMpl').onclick = calcProd
+			document.getElementById('btnDvd').onclick = calcDevide
+
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Калькулятор</h1>
+					<form action="" class="bock-application__form">
+						<div class="block-application__items">
+							<div class="block-application__item">
+								<label for="ftNum" class="block-application__label">First number</label>
+								<input type="number" name="" id="ftNum" class="block-application__input" placeholder="0">
+							</div>
+							<div class="block-application__item">
+								<label for="secNum" class="block-application__label">Second number</label>
+								<input type="number" name="" id="secNum" class="block-application__input" placeholder="0">
+							</div>
+							<div class="block-application__item buttons">
+								<button type="button" id="btnSum" class="block-application__button">Додати</button>
+								<button type="button" id="btnDiff" class="block-application__button">Відняти</button>
+								<button type="button" id="btnMpl" class="block-application__button">Помножити</button>
+								<button type="button" id="btnDvd" class="block-application__button">Поділити</button>
+							</div>
+							<div class="block-application__item">
+								<label for="result" class="block-application__label">Результат</label>
+								<input type="number" name="" id="result" class="block-application__input" placeholder="0" disabled>
+							</div>
+							<button type="reset">Скинути</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+	</div>
+
+
+
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

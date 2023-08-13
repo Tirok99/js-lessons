@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		//Зробити конвертер валют (курси валют – константи у скрипті)
+
+		// ==================================================
+		function convert() {
+			const grnSum = parseFloat(document.getElementById('grnSum').value)
+			const euroConvert = grnSum / euroRate
+			const usdConvert = grnSum / usdRate
+			document.getElementById('euroSum').value = euroConvert.toFixed(2)
+			document.getElementById('usdSum').value = usdConvert.toFixed(2)
+		}
+
+		const usdRate = 37
+		const euroRate = 41
+		window.onload = function () {
+			document.getElementById('convert').onclick = convert
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Конвертер</h1>
+					<form action="" class="bock-application__form">
+						<div class="block-application__items">
+							<div class="block-application__item">
+								<label for="grnSum" class="block-application__label">Сума у гривнях</label>
+								<input type="number" name="" id="grnSum" class="block-application__input" placeholder="0">
+							</div>
+							<button type="button" id="convert" class="block-application__button">Конвертувати</button>
+							<span class="block-application__line"></span>
+							<div class="block-application__item">
+								<label for="euroSum" class="block-application__label">Сума у євро</label>
+								<input type="number" name="" id="euroSum" class="block-application__input" placeholder="0" disabled>
+							</div>
+							<div class="block-application__item">
+								<label for="usdSum" class="block-application__label">Сума у доларах</label>
+								<input type="number" name="" id="usdSum" class="block-application__input" placeholder="0" disabled>
+							</div>
+							<button type="reset">Скинути</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+
+
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

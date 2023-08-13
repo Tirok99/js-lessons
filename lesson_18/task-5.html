@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Користувач задає кількість рядків і стовпців. Відобразити таблицю, у клітинках якої знаходяться числа 1, 2, 3, …
+		// ==================================================
+
+		function createTable() {
+			const rowsNumber = parseInt(document.getElementById('rowsNum').value)
+			const colNumber = parseInt(document.getElementById('colsNum').value)
+			let numCount = 1
+			const tableEl = document.createElement('table')
+			tableEl.className = 'block-application__table'
+			for (let i = 0; i < rowsNumber; i++) {
+				const trEl = document.createElement('tr')
+				for (let j = 0; j < colNumber; j++) {
+					const tdEl = document.createElement('td')
+					tdEl.style.border = '1px solid black'
+					tdEl.innerText = numCount
+					trEl.append(tdEl)
+					numCount++
+				}
+				tableEl.append(trEl)
+			}
+			document.querySelector('.block-application__items').append(tableEl)
+		}
+
+		window.onload = function () {
+			document.getElementById('viewTable').onclick = createTable
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Таблиця значень</h1>
+					<form action="" class="bock-application__form">
+						<div class="block-application__items">
+							<div class="block-application__item">
+								<label for="rowsNum" class="block-application__label">Кількість рядків</label>
+								<input type="number" name="" id="rowsNum" class="block-application__input" placeholder="0">
+							</div>
+							<div class="block-application__item">
+								<label for="colsNum" class="block-application__label">Кількість стовпців</label>
+								<input type="number" name="" id="colsNum" class="block-application__input" placeholder="0">
+							</div>
+							<div class="block-application__item buttons">
+								<button type="button" id="viewTable" class="block-application__button">Відобразити</button>
+							</div>
+
+							<button type="reset" class="block-application__button block-application__button_dynamic">Скинути</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Користувач задає рік народження. Визначити кількість років користувача
+		// ==================================================
+		function calcAge() {
+			const birthYear = parseInt(document.getElementById('birthYear').value)
+			const currentYear = new Date().getFullYear()
+			const age = currentYear - birthYear
+			document.getElementById('result').value = age
+		}
+		window.onload = function () {
+			document.getElementById('btnCalc').onclick = calcAge
+		}
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Калькулятор років</h1>
+					<form action="" class="bock-application__form">
+						<div class="block-application__items">
+							<div class="block-application__item">
+								<label for="birthYear" class="block-application__label">Ваш рік народження</label>
+								<input type="number" name="" id="birthYear" class="block-application__input" placeholder="0">
+							</div>
+							<button type="button" id="btnCalc" class="block-application__button">Розрахунок</button>
+							<div class="block-application__item">
+								<label for="result" class="block-application__label">Кількість років</label>
+								<input type="number" name="" id="result" class="block-application__input" placeholder="0" disabled>
+							</div>
+							<button type="reset">Скинути</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+
+
+
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

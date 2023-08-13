@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Задача. Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+		// ==================================================
+		const wishes = [
+			'Текст текст бажання № 1',
+			'Текст бажання № 2',
+			'Текст бажання № 3',
+			'Текст бажання № 4',
+			'Текст бажання № 5',
+			'Текст бажання № 6',
+			'Текст бажання № 7',
+			'Текст бажання № 8',
+			'Текст бажання № 9',
+			'Текст бажання № 10',
+			'Текст бажання № 11',
+			'Текст бажання № 12',
+			'Текст бажання № 13',
+			'Текст бажання № 14',
+			'Текст бажання No 15',
+		]
+
+		function getRandomWish() {
+			const randomWish = wishes[Math.floor(Math.random() * wishes.length)]
+			return randomWish
+		}
+		window.onload = function () {
+			const wish1 = document.createElement('div')
+			const wish2 = document.createElement('div')
+			const wish3 = document.createElement('div')
+			wish1.innerText = `Перше побажання: ${getRandomWish()}`
+			wish2.innerText = `Друге побажання: ${getRandomWish()}`
+			wish3.innerText = `Третє побажання: ${getRandomWish()}`
+			document.querySelector('.block-application__items').append(wish1)
+			document.querySelector('.block-application__items').append(wish2)
+			document.querySelector('.block-application__items').append(wish3)
+
+
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Бажання на сьогодні:</h1>
+					<form action="" class="bock-application__form">
+						<div class="block-application__items block-application__items_dynamic">
+
+						</div>
+					</form>
+				</div>
+				</form>
+			</div>
+	</div>
+	</main>
+	</div>
+
+
+
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
