@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Application</h1>
+					<div class="block-application__body" id="listsContainer">
+					</div>
+					<button id="colorizeButton" class="block-application__button">Змінити колір</button>
+
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+	<script>
+		// Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір, інші у червоний.
+		// ==================================================
+		class NumberList {
+			constructor(listCount, containerSelector) {
+				this.listCount = listCount
+				this.containerSelector = containerSelector
+				this.render()
+			}
+			getRandomNum(minValue, maxValue) {
+				return minValue + Math.floor(Math.random() * (maxValue - minValue) + 1)
+			}
+
+			colorizeLists() {
+				const lists = document.querySelectorAll('ol')
+
+				for (const list of lists) {
+					const items = list.querySelectorAll('li')
+					items.forEach((li) => {
+						if (items.length % 2 === 0) {
+							list.classList.add("green-bg")
+							list.classList.remove("red-bg")
+						} else {
+							list.classList.add("red-bg")
+							list.classList.remove("green-bg")
+						}
+					})
+				}
+			}
+			render() {
+				for (let i = 1; i <= this.listCount; i++) {
+					let list = document.createElement('ol')
+					let randList = this.getRandomNum(1, 10)
+					for (let j = 1; j <= randList; j++) {
+						let item = document.createElement('li')
+						let randItem = this.getRandomNum(1, 100)
+						item.innerText = randItem
+						list.append(item)
+					}
+					if (this.containerSelector)
+						document.querySelector(this.containerSelector).append(list)
+				}
+				let btn = document.getElementById('colorizeButton')
+				btn.onclick = this.colorizeLists.bind(this)
+			}
+		}
+		window.onload = function () {
+			let res = new NumberList(5, '.block-application__body')
+		}
+	</script>
+</body>
+
+
+</html>

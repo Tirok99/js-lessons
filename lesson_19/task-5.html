@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-5</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити toogle з класом вибраного елемента)
+		// ==================================================
+
+		class CardsItems {
+			constructor({ imgSrc, label, title, price, currency }) {
+				this.imgSrc = imgSrc
+				this.label = label
+				this.title = title
+				this.price = price
+				this.currency = currency
+			}
+			render(containerSelector) {
+				const cardContainer = document.createElement('div')
+				cardContainer.className = 'items-cards__item'
+				const cardLabel = document.createElement('div')
+				cardLabel.className = 'items-cards__label'
+				cardLabel.innerText = this.label
+				cardContainer.append(cardLabel)
+
+				const imgContainer = document.createElement('div')
+				imgContainer.className = 'items-cards__image'
+				cardContainer.append(imgContainer)
+				const img = document.createElement('img')
+				img.setAttribute('src', this.imgSrc)
+				img.className = ''
+				imgContainer.append(img)
+
+				const cardTitle = document.createElement('div')
+				cardTitle.className = 'items-cards__title '
+				cardTitle.innerText = this.title
+				cardContainer.append(cardTitle)
+
+				const priceBody = document.createElement('div')
+				priceBody.className = 'items-cards__price-body'
+				cardContainer.append(priceBody)
+
+				const cardPrice = document.createElement('div')
+				cardPrice.className = 'items-cards__price'
+				cardPrice.innerText = parseInt(this.price)
+				priceBody.append(cardPrice)
+
+				const cardCurrency = document.createElement('div')
+				cardCurrency.className = 'items-cards__currency'
+				cardCurrency.innerText = this.currency
+				priceBody.append(cardCurrency)
+
+				if (containerSelector)
+					document.querySelector(containerSelector).append(cardContainer)
+
+				return cardContainer
+			}
+
+		}
+		//--------------------------
+		const CardsSet = [
+			{
+				imgSrc: '/img/image1.webp',
+				label: 'Топ продаж',
+				title: 'Ноутбук Acer Aspire 7 A715-42G-R3EZ',
+				price: '30999',
+				currency: '₴',
+			},
+			{
+				imgSrc: '/img/image5.webp',
+				label: 'Топ продаж',
+				title: 'Ноутбук ASUS Laptop X515EA-BQ2066',
+				price: '30999',
+				currency: '₴',
+			},
+			{
+				imgSrc: '/img/image3.jpg',
+				label: 'Топ продаж',
+				title: 'Ноутбук Lenovo IdeaPad 1 15ADA7',
+				price: '30999',
+				currency: '₴',
+			},
+			{
+				imgSrc: '/img/image4.jpg',
+				label: 'Акція',
+				title: 'Ноутбук Apple MacBook Air 13 M1',
+				price: '30999',
+				currency: '₴',
+			},
+		]
+
+		window.onload = function () {
+			for (const el of CardsSet) {
+				new CardsItems(el).render('.items-cards')
+			}
+			const cards = document.querySelectorAll('.items-cards__item')
+			for (const card of cards) {
+				card.onclick = function () {
+					this.classList.toggle('items-cards__item_border')
+				}
+			}
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Cards</h1>
+					<div class="block-application__cards-items items-cards">
+
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

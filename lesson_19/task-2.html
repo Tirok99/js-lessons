@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Application</h1>
+					<form action="" class="bock-application__form">
+						<div class="block-application__items-inputs">
+
+							<input type="number" id="value1" class="block-application__input">Value 1
+
+							<input type="number" id="value1" class="block-application__input">Value 2
+
+							<input type="number" id="value1" class="block-application__input">Value 3
+
+							<input type="number" id="value1" class="block-application__input">Value 4
+
+							<input type="number" id="value1" class="block-application__input">Value 5
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</main>
+	</div>
+
+
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+	<script>
+		//Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього))
+
+		// ==================================================
+		function inputFill() {
+			let input = this
+			let value = parseInt(input.value)
+			let nextInput = input
+			let prevInput = input
+			let prevValue = value
+			let nextValue = value
+			while (prevInput.previousElementSibling) {
+				prevValue--
+				prevInput = prevInput.previousElementSibling
+				prevInput.value = prevValue
+			}
+
+			while (nextInput.nextElementSibling) {
+				nextValue++
+				nextInput = nextInput.nextElementSibling
+				nextInput.value = nextValue
+			}
+		}
+		let inputs = document.querySelectorAll('.block-application__input')
+		for (const element of inputs) {
+			element.oninput = inputFill
+		}
+
+
+
+	</script>
+</body>
+
+</html>

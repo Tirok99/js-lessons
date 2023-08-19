@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-6</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен переміщається у загальний список.
+		// ==================================================
+
+		class CompetitionMembers {
+			constructor({ name }) {
+				this.name = name
+				this.MembersList = []
+			}
+
+			render(containerSelector) {
+				const itemCont = document.createElement('li')
+				itemCont.className = 'block-application__item-list'
+
+				const itemName = document.createElement('span')
+				itemName.innerText = this.name
+				itemCont.append(itemName)
+
+				const itemButton = document.createElement('button')
+				itemButton.className = 'block-application__button-list'
+				itemButton.innerText = '==>'
+				itemButton.style.backgroundColor = 'green'
+				itemCont.append(itemButton)
+				itemButton.addEventListener('click', this.chooseMembers.bind(this))
+
+				if (containerSelector) {
+					document.querySelector(containerSelector).append(itemCont)
+				}
+
+				return itemCont
+			}
+
+			chooseMembers(e) {
+				const itemEl = e.target.closest('li')
+				const totalList = document.getElementById('firstListItem')
+				const chooseList = document.getElementById('secondListItem')
+
+				if (itemEl) {
+					let currentName = itemEl.querySelector('span').innerText
+
+					if (!this.MembersList.includes(currentName)) {
+						this.MembersList.push(currentName)
+						chooseList.append(itemEl)
+						itemEl.querySelector('button').innerText = '<=='
+						itemEl.querySelector('button').style.backgroundColor = 'red'
+					} else {
+						totalList.append(itemEl)
+						this.MembersList = this.MembersList.filter((el) => el !== currentName)
+						itemEl.querySelector('button').innerText = '==>'
+						itemEl.querySelector('button').style.backgroundColor = 'green'
+
+					}
+				}
+				return this.MembersList
+			}
+		}
+		//--------------------------
+		const MembersList = [
+			{
+				name: 'Name 01',
+
+			},
+			{
+				name: 'Name 02',
+
+			},
+			{
+				name: 'Name 03',
+
+			},
+			{
+				name: 'Name 04',
+
+			},
+			{
+				name: 'Name 05',
+
+			},
+			{
+				name: 'Name 06',
+
+			},
+			{
+				name: 'Name 07',
+
+			},
+			{
+				name: 'Name 08',
+
+			},
+			{
+				name: 'Name 09',
+
+			},
+			{
+				name: 'Name 10',
+
+			},
+
+		]
+
+		window.onload = function () {
+			for (const el of MembersList) {
+				new CompetitionMembers(el).render('.block-application__list');
+			}
+			// const items = document.querySelectorAll('.block-application__button-list')
+			// for (const item of items) {
+			// 	item.onclick = function () {
+			// 		this.classList.toggle('block-application__button-list_red')
+			// 	}
+			// }
+		}
+
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<h1 class="block-application__title">Application</h1>
+					<div class="block-application__items block-application__items_list ">
+						<div class="block-application__column">
+							<ul id="firstListItem" class="block-application__list">
+
+							</ul>
+						</div>
+						<div class="block-application__column">
+							<ul id="secondListItem" class="block-application__list">
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>

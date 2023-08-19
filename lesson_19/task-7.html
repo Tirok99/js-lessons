@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-7</title>
+	<link rel="stylesheet" href="css/style.css">
+
+<body>
+
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div id="snow-container" class="main__application-snow snow-app">
+				</div>
+
+			</div>
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+<script>
+	// Задача. Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0) і з випадковою швидкістю рухається вниз (у setInterval викликати метод, у якому додавати крок до top). Як тільки сніжинка досягає нижньої частини екрану (top>maxTop) вона знову повинна з’явитись у верхній частині екрану (top=0).
+	// ==================================================
+	class Snowfall {
+		constructor() {
+			this.screenWidth = window.innerWidth
+			this.screenHeight = window.innerHeight
+		}
+		getRandomNum(min, max) {
+			return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+		snowflakeCounts() {
+			let width = this.screenWidth
+			return (width = width / 20 / 1.5)
+		}
+		render(containerSelector) {
+			const snowflake = document.createElement("div")
+			snowflake.className = "snowflake"
+			snowflake.innerText = "❅"
+			snowflake.style.top = "0"
+			snowflake.style.left = `${containerSelector}px`
+			return snowflake
+		}
+		run() {
+			for (let i = 0; i < this.snowflakeCounts(); i++) {
+				const startPosition = this.getRandomNum(0, this.screenWidth)
+				let snowflake = this.render(startPosition)
+				document.body.append(snowflake)
+				let step = -40
+				setInterval(() => {
+					snowflake.style.top = `${step++}px`
+					if (step > this.screenHeight) step = -60
+				}, this.getRandomNum(1, 30) + 3)
+			}
+		}
+	}
+	let snow = new Snowfall()
+	snow.run()
+
+</script>
+</head>
+
+</html>

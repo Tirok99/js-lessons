@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<script>
+		// Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до відповідної таблиці додається червона рамка (спробуйте додати можливість відображення кількості кліків біля назви таблиці з використанням відповідно доданого для цього атрибута).
+		// ==================================================
+		class TableList {
+			constructor(numTable, rows, cols) {
+				this.rows = rows
+				this.cols = cols
+				this.numTable = numTable
+			}
+			getRandomNum(min, max) {
+				return min + Math.floor(Math.random() * (max - min + 1))
+			}
+			render(containerSelector) {
+				for (let num = 1; num <= this.numTable; num++) {
+					const tableEl = document.createElement('table')
+					tableEl.className = 'block-application__table-color'
+					const tableTitle = document.createElement('caption')
+					tableTitle.innerText = `Тable # ${num}`
+					tableEl.append(tableTitle)
+					for (let i = 0; i < this.rows; i++) {
+						const trEl = document.createElement('tr')
+						for (let j = 0; j < this.cols; j++) {
+							const tdEl = document.createElement('td')
+							tdEl.style.border = '1px solid black'
+							const randomNum = this.getRandomNum(1, 50)
+							tdEl.innerText = randomNum
+							tdEl.onclick = this.choiceElement.bind(this)
+							trEl.append(tdEl)
+						}
+						tableEl.append(trEl)
+					}
+					if (containerSelector)
+						document.querySelector(containerSelector).append(tableEl)
+					const countBody = document.createElement('tr')
+					countBody.innerText = 'Count: '
+					tableEl.append(countBody)
+					const countEl = document.createElement('td')
+					countEl.innerText = 0
+					countEl.className = 'count'
+					countBody.append(countEl)
+
+				}
+			}
+
+			choiceElement(e) {
+				let choiceEl = e.target
+				if (choiceEl.closest('td')) {
+					let allTables = document.querySelectorAll('table')
+					allTables.forEach((table) => {
+						table.classList.remove('border')
+					})
+					const count = choiceEl.closest('table').querySelector('.count')
+					count.innerText = + count.innerText + 1
+					let table = choiceEl.closest('table')
+					table.classList.add('table-border')
+				}
+
+			}
+		}
+
+		window.onload = function () {
+			let tables = new TableList(3, 3, 3)
+			tables.render('.block-application__body')
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__body" id="tableContainer">
+					</div>
+
+				</div>
+
+			</div>
+
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+</body>
+
+</html>
