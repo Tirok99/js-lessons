@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__body">
+						<form class="block-application__form">
+							<div class="block-application__items">
+								<div class="block-application__item">
+									<label for="i-01" class="block-application__label">#1</label>
+									<input type="text" id="i-01" class="block-application__input">
+								</div>
+								<div class="block-application__item">
+									<label for="i-02" class="block-application__label">#2</label>
+									<input type="text" id="i-02" class="block-application__input">
+								</div>
+								<div class="block-application__item">
+									<label for="i-03" class="block-application__label">#3</label>
+									<input type="text" id="i-03" class="block-application__input">
+								</div>
+								<button type="button" class="block-application__button">Button 1</button>
+								<button type="button" class="block-application__button">Button 2</button>
+								<button type="button" class="block-application__button">Button 3</button>
+								<div id="result" class="block-application__result result-items">
+									<span id="inputEl" class="result-items__inputs"></span>
+									<span id="buttonEl" class="result-items__buttons"></span>
+								</div>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+
+	<script>
+		// На сторінці міститься певна кількість кнопок і інпутів. Підраховувати загальну кількість кліків окремо на кнопках і окремо на інпутах.
+		// ==================================================
+		class FormCountClick {
+			constructor() {
+				this.buttonClick = 0
+				this.inputClick = 0
+			}
+			clicksCount(e) {
+				let clickElement = e.target
+				if (clickElement.tagName == "INPUT") {
+					this.inputClick++
+					this.inputResult.innerText = `Count clicks on inputs: ${this.inputClick}`
+				}
+				if (clickElement.tagName == "BUTTON") {
+					this.buttonClick++
+					this.buttonResult.innerText = `Count clicks on buttons: ${this.buttonClick}`
+				}
+			}
+			render(containerSel) {
+				const result = document.getElementById('result')
+				this.inputResult = document.getElementById('inputEl')
+				this.buttonResult = document.getElementById('buttonEl')
+				result.append(this.inputResult)
+				result.append(this.buttonResult)
+
+				if (containerSel) {
+					let container = document.querySelector(containerSel)
+					container.append(result)
+					container.addEventListener('click', this.clicksCount.bind(this))
+				}
+			}
+
+		}
+		window.onload = () => {
+			let clickCount = new FormCountClick()
+			clickCount.render('.block-application__items')
+		}
+
+
+	</script>
+</body>
+
+</html>

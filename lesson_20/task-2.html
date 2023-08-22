@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div id="snow-container" class="main__application-snow tank-app">
+				</div>
+
+			</div>
+		</main>
+	</div>
+
+
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+	<script>
+		//Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть вниз. При кліку на танк він вибухає і зникає з екрану.
+
+		// ==================================================
+		class Tank {
+			constructor(tankCount, container, minLeft, minTop) {
+				this.tankCount = tankCount
+				this.container = container
+				this.minLeft = minLeft
+				this.minTop = minTop
+				this.click = 0
+			}
+			getRandomNum(minNum, maxNum) {
+				return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+			}
+			tankAppearance(minValue, maxValue) {
+				for (const element of this.tanks.children) {
+					let positionTop = 0
+					setInterval(() => {
+						positionTop += 0.1
+						element.style.top = positionTop + "%"
+						if (positionTop > 100) positionTop = 0
+					}, this.getRandomNum(minValue, maxValue))
+				}
+			}
+			render() {
+				this.tanks = document.createElement('div')
+				for (let element = 0; element < this.tankCount; element++) {
+					let tank = document.createElement('img')
+					tank.setAttribute('src', '/img/tank.png')
+					tank.className = 'tankItem'
+					tank.style.top = 0
+					tank.style.left = this.getRandomNum(this.minLeft, this.minTop) + '%'
+					tank.addEventListener('click', this.destroyTank.bind(this))
+					this.tanks.append(tank)
+				}
+				if (this.container) document.querySelector(this.container).append(this.tanks)
+				this.tankAppearance(2, 12)
+			}
+			destroyTank(e) {
+				let tankDestroy = e.target
+				this.click += 1
+				tankDestroy.setAttribute('src', '/img/vzriv.png')
+				setTimeout(() => {
+					tankDestroy.remove()
+				}, 200);
+				if (this.click === this.tankCount) {
+					this.click = 0
+					this.render()
+				}
+			}
+
+
+		}
+		window.onload = () => {
+			let tank = new Tank(15, '.tank-app', -20, 95)
+			tank.render()
+		}
+
+
+
+	</script>
+</body>
+
+</html>

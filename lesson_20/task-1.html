@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану. Кожна зірка
+	(це екземпляр класу Star) з певним кроком і інтервалом збільшується від мінімального до максимального розміру. Як тільки досягнути максимального розміру зірочка	повинна з’являтися у іншій випадковій позиції.
+	 ================================================== -->
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__items">
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+	<script>
+
+		class Star {
+			constructor(imageSrc) {
+				this.imageSrc = imageSrc
+			}
+			getRandNum(minValue, maxValue) {
+				return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+			}
+			render() {
+				let starContainer = document.createElement('div')
+				let starElement = document.createElement('img')
+				starElement.setAttribute('src', this.imageSrc)
+				starContainer.append(starElement)
+				starContainer.classList.add('block-application__img')
+				document.body.append(starContainer)
+				this.starContainer = starContainer
+				this.starElement = starElement
+				this.getStarSize(20, 80)
+			}
+			getStarSize(minSize, maxSize) {
+				this.starContainer.style.top = this.getRandNum(0, 100) + '%'
+				this.starContainer.style.left = this.getRandNum(0, 100) + '%'
+				let currentSize = minSize
+				this.starElement.style.width = currentSize + 'px'
+				let interval = setInterval(() => {
+					currentSize += 1
+					this.starElement.style.width = currentSize + 'px'
+					if (currentSize >= maxSize) {
+						clearInterval(interval)
+						currentSize = minSize
+						this.getStarSize(minSize, maxSize)
+					}
+				}, 100)
+			}
+
+		}
+		window.onload = function () {
+			let star1 = new Star('/img/star.png')
+			star1.render()
+			let star2 = new Star('/img/star.png')
+			star2.render()
+			let star3 = new Star('/img/star.png')
+			star3.render()
+			let star4 = new Star('/img/star.png')
+			star4.render()
+			let star5 = new Star('/img/star.png')
+			star5.render()
+		}
+
+	</script>
+</body>
+
+</html>
