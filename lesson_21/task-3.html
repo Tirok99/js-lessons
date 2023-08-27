@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-3</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+
+					<div class="block-application__items">
+
+					</div>
+
+
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+	<script>
+		//Розробити Класи House, Dog, Bird. Подумайте яким має бути спільний клас предок.
+		// ==================================================
+		class Location {
+			constructor(coordinateX, coordinateY, imgSource, interval) {
+				this.coordinateX = coordinateX;
+				this.coordinateY = coordinateY;
+				this.imgSource = imgSource
+				this.interval = interval
+			}
+			render(containerselector) {
+				const contEl = document.createElement("div")
+				contEl.style.position = 'absolute'
+				const imgEl = document.createElement("img")
+				imgEl.className = "block-task__img"
+				imgEl.setAttribute("src", this.imgSource)
+				contEl.append(imgEl)
+				contEl.style.top = this.coordinateY + "px"
+				contEl.style.left = this.coordinateX + "px"
+				this.changeImage(contEl)
+				if (containerselector) {
+					document.querySelector(containerselector).append(contEl)
+				}
+				return contEl
+			}
+			getRandomNum(minVal, maxVal) {
+				return Math.random() * (maxVal - minVal)
+			}
+			changeImage(obj) {
+				setInterval(() => {
+					this.imageMove(obj)
+				}, this.interval)
+			}
+			imageMove() { }
+		}
+		class House extends Location {
+			constructor(coordinateX, coordinateY, imgSource, interval, minVal, maxVal) {
+				super(coordinateX, coordinateY, imgSource, interval)
+				this.minVal = minVal
+				this.maxVal = maxVal
+			}
+			imageMove(obj) {
+				obj.style.transform = `scale(${this.getRandomNum(this.minVal, this.maxVal)})`
+			}
+		}
+		class Dog extends Location {
+			constructor(coordinateX, coordinateY, imgSource, interval, minVal, maxVal) {
+				super(coordinateX, coordinateY, imgSource, interval)
+				this.minVal = minVal
+				this.maxVal = maxVal
+			}
+			imageMove(obj) {
+				obj.style.left = `${this.getRandomNum(this.minVal, this.maxVal)}px`
+			}
+		}
+		class Bird extends Location {
+			constructor(coordinateX, coordinateY, imgSource, interval, minVal, maxVal) {
+				super(coordinateX, coordinateY, imgSource, interval)
+				this.minVal = minVal
+				this.maxVal = maxVal
+			}
+			imageMove(obj) {
+
+				obj.style.top = `${this.getRandomNum(this.minVal, this.maxVal)}px`
+			}
+		}
+		let house = new House(100, 100, "./img/house.png", 1000, 2, 4)
+		let dog = new Dog(150, 50, "./img/dog.png", 1000, 0, 1600)
+		let bird = new Bird(200, 250, "./img/bird.png", 1000, 0, 800)
+		house.render(".block-application")
+		dog.render(".block-application")
+		bird.render(".block-application")
+
+	</script>
+</body>
+
+
+</html>

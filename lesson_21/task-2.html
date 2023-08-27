@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div id="snow-container" class="main__application-snow tank-app">
+				</div>
+
+			</div>
+		</main>
+	</div>
+
+
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+	<script>
+		//Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції • Вивести усіх простих клієнтів; • Вивести усіх клієнтів GoldenClient; • Знати сумарну кількість грошей на рахунку;
+
+		// ==================================================
+
+		class Client {
+			constructor(id, name, balance) {
+				this.id = id
+				this.name = name
+				this.balance = balance
+			}
+
+			deposit(amount) {
+				if (amount > 0) {
+					this.balance += amount
+				}
+			}
+
+			withdraw(amount) {
+				if (amount > 0 && amount <= this.balance) {
+					this.balance -= amount
+				}
+			}
+		}
+
+		class GoldenClient extends Client {
+			constructor(id, name, balance, creditLimit) {
+				super(id, name, balance)
+				this.creditLimit = creditLimit
+				this.creditUsed = 0
+			}
+
+			useCredit(amount) {
+				if (amount <= this.creditLimit - this.creditUsed) {
+					this.creditUsed += amount
+				}
+			}
+
+			calculateInterest() {
+				//  відсоток за використання кредитних коштів
+				return this.creditUsed * 0.05
+			}
+		}
+
+		class Bank {
+			constructor(clients = []) {
+				this.clients = clients
+			}
+
+			addClient(client) {
+				this.clients.push(client)
+			}
+
+			getRegularClients() {
+				return this.clients.filter(client => !(client instanceof GoldenClient))
+			}
+
+			getGoldenClients() {
+				return this.clients.filter(client => client instanceof GoldenClient)
+			}
+
+			getTotalBalance() {
+				return this.clients.reduce((total, client) => total + client.balance, 0)
+			}
+		}
+
+		// Створення масиву клієнтів за замовчуванням
+
+		const defaultClients = [
+			new Client(1, "Дмитро", 1500),
+			new Client(2, "Олексій", 1000),
+			new Client(3, "Тамара", 800),
+			new Client(4, "Екатерина", 1000),
+			new GoldenClient(5, "Михайло", 1000, 2000),
+			new GoldenClient(6, "Валерій", 800),
+			new GoldenClient(7, "Олег", 1000),
+			new GoldenClient(8, "Олександр", 1500),
+		]
+		// Створення об'єкту банку з масивом клієнтів за замовчуванням
+		const bankWithDefaultClients = new Bank(defaultClients)
+
+		// Вивід інформації про об'єкти банку з масивом клієнтів за замовчуванням
+		console.log("Regular Clients:", bankWithDefaultClients.getRegularClients())
+		console.log("Golden Clients:", bankWithDefaultClients.getGoldenClients())
+		console.log("Total Balance:", bankWithDefaultClients.getTotalBalance())
+
+
+
+
+	</script>
+</body>
+
+</html>

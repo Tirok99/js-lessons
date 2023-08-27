@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Створити клас Client
+	 ================================================== -->
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div id="clients-container" class="block-application__items">
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+	<script>
+		class Client {
+			constructor(id, name, balance) {
+				this.id = id
+				this.name = name
+				this.balance = balance
+			}
+			addFunds(amount) {
+				if (amount > 0) {
+					this.balance += amount
+				}
+			}
+			withdrawFunds(amount) {
+				if (amount > 0 && amount <= this.balance) {
+					this.balance -= amount
+				}
+			}
+			toString() {
+				return `ID: ${this.id}, Name: ${this.name}, Balance: ${this.balance}`
+			}
+		}
+
+		class GoldenClient extends Client {
+			constructor(id, name, balance, creditLimit) {
+				super(id, name, balance)
+				this.creditLimit = creditLimit
+				this.creditUsed = 0
+			}
+			useCredit(amount) {
+				if (amount <= this.creditLimit - this.creditUsed) {
+					this.creditUsed += amount
+				}
+			}
+			calculateInterest() {
+				// відсоток за використання кредитних коштів
+				return this.creditUsed * 0.05
+			}
+			toString() {
+				return `${super.toString()}, Credit Limit: ${this.creditLimit}, Credit Used: ${this.creditUsed}`
+			}
+		}
+
+		// Приклад використання
+		const goldenClient = new GoldenClient(2, "Дмитро", 1500, 1000)
+		goldenClient.addFunds(500)
+		goldenClient.useCredit(800)
+		console.log(goldenClient.toString())
+
+		console.log(`Пеня: ${goldenClient.calculateInterest()} грн.`)
+
+	</script>
+</body>
+
+</html>

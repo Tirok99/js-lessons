@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__body">
+						<form id="form" class="block-application__form">
+							<div id="items" class="block-application__items_flex">
+
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+
+	<script>
+		// Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку (перевіряти чи є числом, чи від 1 до 100).
+		// Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх помилок зробити з використанням відповідних класів.
+		// ==================================================
+		class InvalidMonthError extends Error {
+			constructor(message) {
+				super(message)
+				this.name = 'InvalidMonthError'
+			}
+		}
+
+		class InvalidGradeError extends Error {
+			constructor(message) {
+				super(message)
+				this.name = 'InvalidGradeError'
+			}
+		}
+
+		class GradeFixer {
+			render() {
+
+				const monthInput = document.createElement('input')
+				monthInput.type = 'number';
+				monthInput.className = 'block-application__input'
+				monthInput.placeholder = 'Введіть місяць навчання'
+				const gradeInput = document.createElement('input')
+				gradeInput.type = 'number';
+				gradeInput.className = 'block-application__input'
+				gradeInput.placeholder = 'Введіть оцінку'
+
+				const submitButton = document.createElement('button')
+				submitButton.className = 'block-application__button'
+				submitButton.textContent = 'Submit';
+				submitButton.addEventListener('click', () => {
+					try {
+						const month = monthInput.value
+						const grade = gradeInput.value
+
+						const canFixGrade = GradeFixer.canFixGrade(month, grade);
+						document.write(`Чи може бути оцінка виправлена? ${canFixGrade}`)
+					} catch (error) {
+						if (error instanceof InvalidMonthError || error instanceof InvalidGradeError) {
+							console.error(error.message)
+						} else {
+							throw error
+						}
+					}
+
+				})
+				const cont = document.getElementById('form')
+				const form = document.getElementById('items')
+				form.appendChild(monthInput)
+				form.appendChild(gradeInput)
+				form.appendChild(submitButton)
+
+				cont.append(form)
+			}
+
+			static validateMonth(month) {
+				const parsedMonth = parseInt(month, 10)
+				if (isNaN(parsedMonth) || parsedMonth < 1 || parsedMonth > 12) {
+					throw new InvalidMonthError('Invalid month. Please enter a number between 1 and 12.')
+				}
+				return parsedMonth
+			}
+
+			static validateGrade(grade) {
+				const parsedGrade = parseInt(grade, 10)
+				if (isNaN(parsedGrade) || parsedGrade < 1 || parsedGrade > 100) {
+					throw new InvalidGradeError('Invalid grade. Please enter a number between 1 and 100.')
+				}
+				return parsedGrade;
+			}
+
+			static canFixGrade(month, grade) {
+				const parsedMonth = this.validateMonth(month)
+				const parsedGrade = this.validateGrade(grade)
+
+				if (parsedGrade < 60 && parsedMonth !== 12) {
+					return true
+				}
+				return false
+			}
+		}
+
+		// Example usage
+		const check = new GradeFixer()
+		check.render()
+
+
+
+	</script>
+</body>
+
+</html>
