@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-4</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<script>
+		// Вивести назву дня
+		// ==================================================
+		function getCurrentDay() {
+			const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+			const currentDay = new Date().getDay()
+			return daysOfWeek[currentDay]
+		}
+		const currentDay = getCurrentDay()
+		document.write(currentDay)
+
+
+
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__body">
+
+						<div class="block-application__items">
+
+						</div>
+
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+
+
+</body>
+
+</html>

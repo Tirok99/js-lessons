@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<script>
+		//Вивести дату у форматі “місяць – рік – вихідний/робочий”
+		// ==================================================
+
+		function formatDate(date) {
+			const options = { month: 'long', year: 'numeric', weekday: 'long' }
+			const formattedDate = date.toLocaleDateString('en-US', options)
+
+			if (date.getDay() === 0 || date.getDay() === 6) {
+				return formattedDate + '/weekend'
+			} else {
+				return formattedDate + '/workday'
+			}
+		}
+
+		const date = new Date()
+		const formattedDate = formatDate(date)
+		document.write(formattedDate)
+
+
+	</script>
+	</body>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div id="snow-container" class="main__application-snow tank-app">
+				</div>
+
+			</div>
+		</main>
+	</div>
+
+
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+
+
+</html>

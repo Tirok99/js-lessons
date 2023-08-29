@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-10</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__body">
+						<form class="block-application__form">
+							<div class="block-application__items">
+								<label for="productionDate" class="block-application__label">Введіть дату виготовлення:</label>
+								<input type="date" id="productionDate" class="block-application__input">
+
+								<label for="expirationDays" class="block-application__label">Строк придатності (дні):</label>
+								<input type="number" id="expirationDays" class="block-application__input">
+
+								<button onclick="checkSuitability()" class="block-application__button">Перевірити придатність</button>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+
+	<script>
+		// Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.
+		// ==================================================
+		function checkSuitability() {
+			const productionDateInput = document.getElementById('productionDate')
+			const expirationDaysInput = document.getElementById('expirationDays')
+
+			const productionDateString = productionDateInput.value
+			const expirationDays = parseInt(expirationDaysInput.value, 10)
+
+			const productionDate = new Date(productionDateString)
+			const expirationDate = new Date(productionDate.getFullYear(), productionDate.getMonth(), productionDate.getDate() + expirationDays);
+			const currentDate = new Date()
+
+			if (currentDate <= expirationDate) {
+				document.write("Йогурт придатний.")
+			} else {
+				document.write("Йогурт не придатний.")
+			}
+		}
+
+	</script>
+</body>
+
+</html>

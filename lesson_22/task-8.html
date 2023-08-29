@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-8</title>
+	<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__body">
+
+						<div class="block-application__items">
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</main>
+	</div>
+	<script>
+		// Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для розв’язання задачі.
+		// ==================================================
+
+		class Timer {
+			constructor() {
+				this.startTime = 0
+				this.endTime = 0
+			}
+
+			start() {
+				this.startTime = new Date().getTime()
+			}
+
+			stop() {
+				this.endTime = new Date().getTime()
+			}
+
+			getElapsedTime() {
+				return (this.endTime - this.startTime) / 1000
+			}
+		}
+
+		class AdditionTask {
+			constructor() {
+				this.firstNumber = this.getRandomNumber()
+				this.secondNumber = this.getRandomNumber()
+				this.correctAnswer = this.firstNumber + this.secondNumber
+			}
+
+			getRandomNumber() {
+				return Math.floor(Math.random() * 100) + 1
+			}
+
+			solve() {
+				const userAnswer = parseInt(prompt(`Введіть суму ${this.firstNumber} та ${this.secondNumber}:`))
+				return userAnswer === this.correctAnswer
+			}
+		}
+
+		const timer = new Timer()
+		const task = new AdditionTask()
+
+		console.log(`Задача: обчисліть суму ${task.firstNumber} та ${task.secondNumber}.`)
+
+		timer.start()
+		const isCorrect = task.solve()
+		timer.stop()
+
+		if (isCorrect) {
+			document.write('Відповідь правильна!<br>')
+		} else {
+			document.write('Відповідь неправильна!<br>')
+		}
+
+		document.write(`Час виконання: ${timer.getElapsedTime()} секунд.`)
+
+
+	</script>
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+
+
+</body>
+
+</html>

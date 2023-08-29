@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-6</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script>
+		// Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.
+		// ==================================================
+		function calculateReturnDate() {
+			const startDateInput = document.getElementById('startDateInput')
+			const startDate = new Date(startDateInput.value)
+			const returnDate = new Date(startDate.getTime() + (56 * 24 * 60 * 60 * 1000))
+
+			const returnDateString = returnDate.toISOString().split('T')[0]
+			document.write(`Дата повернення: ${returnDateString}.`)
+		}
+
+
+	</script>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__body">
+						<form class="block-application__form">
+							<div class="block-application__items">
+								<label for="startDateInput">Enter the start date of your vacation:</label>
+								<input type="date" id="startDateInput">
+
+								<button onclick="calculateReturnDate()">Calculate Return Date</button>
+
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</main>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+
+
+</body>
+
+</html>
