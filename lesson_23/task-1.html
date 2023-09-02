@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--Задача. 
+		
+	 ================================================== -->
+</head>
+<script>
+	// Задача.1. Дано масив рядків. Вивести ті, у яких є цифри (використати метод test та регулярні		вирази).
+	const strArray = ['Winter356', 'sun', 'sttrryy', 'rain', 'bbbddd', 'snow', 'rryyg451q', 'Spr999ing', 'stone', '777Summer']
+	const regex1 = /\d/g
+	const result1 = strArray.filter(str => str.match(regex1))
+	document.write(`Array: ${strArray}<br><br>`)
+	document.write(`Task #1: ${result1}<br><br>`)
+	// ===========
+
+	// Задача 2. Дано масив рядків. Вивести ті, у яких немає цифр.
+	const regex2 = /^\D+$/
+	const result2 = strArray.filter(str => str.match(regex2))
+	document.write(`Task #2: ${result2}<br><br>`)
+	// ===========
+
+	// Задача 3. Дано масив рядків. Вивести ті, у яких є голосні літери.
+	const regex3 = /[aeiou]/i
+	const result3 = strArray.filter(str => str.match(regex3))
+	document.write(`Task #3: ${result3}<br><br>`)
+	// ===========
+
+	// Задача 4. Дано масив рядків. Вивести ті, у яких немає голосних літер.
+	const regex4 = /^[^aeiou]+$/i
+	const result4 = strArray.filter(str => str.match(regex4))
+	document.write(`Task #4: ${result4}<br><br>`)
+	// ===========
+
+	// Задача 5. Дано масив рядків. Вивести ті, у яких є або цифра 1 або цифра 3.
+	const regex5 = /[1,3]/
+	const result5 = strArray.filter(str => str.match(regex5))
+	document.write(`Task #5: ${result5}<br><br>`)
+	// ===========
+
+	// Задача 6. Дано рядок тексту, вивести усі числа, які є у тексті.
+	const regex6 = /^[^1,3]+$/
+	const result6 = strArray.filter(str => str.match(regex6))
+	document.write(`Task #6: ${result6}<br><br>`)
+	// ===========
+	// Задача 7. Дано рядок тексту. Знайти усі знаки пунктуації, які були використано.
+	const strString = 'Winter356, sun+sun, sttrryy, sttr:ry;;y, rain, bbb//ddd,snow?, rryyg451q, Spr999ing, stone, 777Summer'
+	const result7 = strString.match(/[0-9]/g)
+	document.write(`Task #7: ${result7}<br><br>`)
+	// ===========
+
+	// Задача 8. Дано рядок тексту. Вивести усі складові, які розділені розділовими знаками.
+	const result8 = strString.match(/\W/g)
+	document.write(`Task #8: ${result8}<br><br>`)
+	// ===========
+
+	// Задача 9. Дано рядок тексту. Перевірити, чи містить він дату у форматі dd.mm.yyyy (dd- день, mm- місяць, yyyy- рік).
+	const strString1 = 'Hi was born 15.02.1999. Registration date: 01.01.2012'
+	const result9 = strString1.match(/\b\d{2}\.\d{2}\.\d{4}\b/g)
+	document.write(`Task #9: ${result9}<br><br>`)
+	// ===========
+
+	// Задача 10. Дано рядок тексту. Підрахувати кількість двоцифрових чисел у рядку.
+	const strString2 = 'Winter536, sun+sun, sttr44ryy, rain00, snow1, rryyg451q, Spr9999ing, stone, 77Summer, 88'
+	const result10 = strString2.match(/\b\d{2}\b|\D\d{2}/g)
+	const count = result10 ? result10.length : 0
+	document.write(`Task #10: ${count}<br><br>`)
+	// ===========
+
+	// Задача 11. Визначити чи може бути рядок тексту номером банківської картки (приклад: «4142-3433-2323-3434»). Знайти усі такі номери.
+	const strString3 = '4433-6645-2343-3434, Іванов Іван, 4142-3433-2323-3211 Петров Петр, 4142-3433-8590-3434 Сідоров Сідр'
+	const result11 = strString3.match(/[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}/g)
+	document.write(`Task #11: ${result11}<br><br>`)
+	// ===========
+
+	// Задача 12. Дано адресу сайту. Визначити, чи є він урядовим (містить домен “gov”)
+	const strStrin4 = 'https://www.test.gov'
+	const result12 = /\.gov\/?$/;
+	const hasGov = strStrin4.split(',').some(str => result12.test(str.trim()))
+	document.write(`Task #12: ${hasGov}<br><br>`)
+	// ===========
+
+	// Задача 13. Вибрати усі роки після 2021 року з отриманого повідомлення
+	const strString4 = 'Winter 2021, summer 2022, autumn 2020, winter 2024, spring 2019, summer 2026, autumn 2027, winter 2018, spring 2029, summer 2015'
+	const result13 = strString4.match(/\b20[2-9][2-9]\b/g)
+	document.write(`Task #13: ${result13}<br><br>`)
+	// ===========
+
+	// Задача 14. Дано номер телефону. Перевірити, чи є цей телефон телефоном з України (починаєтсья на «+38»)
+	const strString5 = '+38 050 123 45 67'
+	const regex = /^\+38/
+	const result14 = regex.test(strString5)
+	document.write(`Task #14: ${result14}<br><br>`)
+	// ===========
+
+	// Задача 15. Користувач вводить прізвище та ім’я в одному рядку через пробіл. Замінити пробіл на дефіс.
+	function modifyFullName() {
+		const fullNameInput = document.getElementById('fullNameInput')
+		const fullName = fullNameInput.value
+		const result15 = fullName.replace(/\s/g, '-')
+		document.write(`Task #15: ${result15}<br><br>`)
+	}
+	// ===========
+	// Задача 16. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день/місяць/рік»
+	const date = prompt('Ведіть дату в форматі «день.місяць.рік»')
+	const dateArray = date.split('.')
+	const result16 = `${dateArray[0]}/${dateArray[1]}/${dateArray[2]}`
+	document.write(`Task #16: ${result16}<br><br>`)
+	// ===========
+
+	// Задача 17. Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи є це день вихідним
+	function checkWeekend() {
+		const dayInput = document.getElementById('dayInput');
+		const day = dayInput.value.toLowerCase();
+		const isWeekend = (day === 'sat' || day === 'sun' || day === '6' || day === '0');
+
+		if (isWeekend) {
+			document.write(`Task #17: weekend day`)
+
+		} else {
+			document.write(`Task #17: not a weekend day`)
+
+		}
+	}
+	// ===========
+
+
+</script>
+
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__items">
+						<div class="block-application__item">
+							<label for="fullNameInput" class="block-application__label">№15</label>
+							<input type="text" id="fullNameInput" placeholder="Ввведіть прізвище та ім’я через пробіл" class="block-application__input">
+							<button onclick="modifyFullName()" class="block-application__button">Заміна</button>
+						</div>
+						<div class="block-application__item">
+							<label for="dayInput" class="block-application__label">№17</label>
+							<input type="text" id="dayInput" placeholder="Enter a day of the week (0-6 or 'sun,mon,tue,wed,thu,fri,sat')">
+							<button onclick="checkWeekend()">Check</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+</body>
+
+</html>
