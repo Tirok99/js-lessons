@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--Задача. 
+		
+	 ================================================== -->
+</head>
+<script>
+
+	// Задача 5. Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у	списку і максимальне.
+	let ages = [15, 21, 12, 12, 15, 11, 10, 13, 9, 12]
+	let mapAges = new Map()
+	for (const age of ages) {
+		mapAges.set(age, (mapAges.get(age) ?? 0) + 1)
+	}
+	console.log(mapAges)
+	let maxAge = Math.max(...ages.values())
+	console.log(`Максимальний вік:${maxAge}`)
+
+	// Задача 6. Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
+	let books = [
+		{ name: 'The Lord of the Rings', year: 1954, author: 'Author1' },
+		{ name: 'The Hobbit', year: 1937, author: 'Author2' },
+		{ name: 'The Silmarillion', year: 1977, author: 'Author2' },
+		{ name: 'The Lord of the Rings', year: 1954, author: 'Author1' },
+		{ name: 'The Hobbit', year: 1937, author: 'Author2' },
+		{ name: 'The Silmarillion', year: 1977, author: 'Author3' },
+	]
+	let mapBooks = new Map()
+	for (const book of books) {
+		mapBooks.set(book.author, (mapBooks.get(book.author) ?? 0) + 1)
+	}
+	console.log(mapBooks)
+
+	// Задача 7. Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін). 
+	//  Підрахувати для кожного клієнта кількість відвідувань
+
+	let visitors = [
+		{ name: 'User1', login: 'login1' },
+		{ name: 'User2', login: 'login2' },
+		{ name: 'User1', login: 'login1' },
+		{ name: 'User2', login: 'login2' },
+		{ name: 'User1', login: 'login1' },
+	]
+	let mapVisitors = new Map()
+	for (const visitor of visitors) {
+		mapVisitors.set(visitor.name, (mapVisitors.get(visitor.name) ?? 0) + 1)
+	}
+	console.log(mapVisitors)
+
+	// Задача 8. Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів кожного з курсів
+
+	let students = [
+		{ name: 'User1', course: 'course1', faculty: 'faculty1' },
+		{ name: 'User2', course: 'course2', faculty: 'faculty2' },
+		{ name: 'User3', course: 'course1', faculty: 'faculty1' },
+		{ name: 'User4', course: 'course2', faculty: 'faculty2' },
+		{ name: 'User5', course: 'course1', faculty: 'faculty1' },
+		{ name: 'User6', course: 'course3', faculty: 'faculty2' },
+		{ name: 'User7', course: 'course1', faculty: 'faculty1' },
+		{ name: 'User8', course: 'course2', faculty: 'faculty2' },
+		{ name: 'User9', course: 'course1', faculty: 'faculty3' },
+		{ name: 'User10', course: 'course3', faculty: 'faculty2' },
+		{ name: 'User11', course: 'course1', faculty: 'faculty1' },
+		{ name: 'User12', course: 'course2', faculty: 'faculty2' },
+		{ name: 'User13', course: 'course1', faculty: 'faculty1' },
+		{ name: 'User14', course: 'course3', faculty: 'faculty2' },
+		{ name: 'User15', course: 'course1', faculty: 'faculty3' },
+		{ name: 'User16', course: 'course2', faculty: 'faculty3' },
+		{ name: 'User17', course: 'course1', faculty: 'faculty1' },
+	]
+	let mapFaculties = new Map()
+	let mapCourses = new Map()
+	// Підрахувати кількість факультетів
+	for (const student of students) {
+		mapFaculties.set(student.faculty, (mapFaculties.get(student.faculty) ?? 0) + 1)
+		// Підрахувати кількість сдутентів на кожному курсі
+		mapCourses.set(student.course, (mapCourses.get(student.course) ?? 0) + 1)
+	}
+	console.log(`Кількість факультетів: ${mapFaculties.size}`)
+	console.log('Кількість студентів на кожному курсі:', mapCourses)
+
+	// Задача 9. Дано масив показів температур. Підрахувати кількість входжень кожного із показів. Заокруглити вверх значення та підрахувати кількість різних показів.
+	let temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9]
+	let mapOccurrences = new Map()
+	let mapCounts = new Map()
+
+	for (const temperature of temperatures) {
+		// кількість входжень
+		mapOccurrences.set(temperature, (mapOccurrences.get(temperature) ?? 0) + 1)
+
+		// Заокруглити вверх значення
+		const roundedTemperature = Math.ceil(temperature)
+
+		// Cкількість різних показів
+		mapCounts.set(roundedTemperature, (mapCounts.get(roundedTemperature) ?? 0) + 1)
+	}
+
+	console.log('Кількість входжень:', mapOccurrences)
+	console.log(`Кількість різних показів: ${mapCounts.size}`)
+
+	// Задача 10. Дано два списки прізвищ студентів, що відвідують гуртки з математики і історії. Підрахувати скільки студентів з гуртка з історії також відвідують гурток з математики. Також підрахувати скільки всього студентів відвідують хоча б один гурток.
+	let studentsMath = [
+		{ name: 'User1' },
+		{ name: 'User2' },
+		{ name: 'User3' },
+		{ name: 'User4' },
+		{ name: 'User5' },
+		{ name: 'User6' },
+		{ name: 'User7' },
+		{ name: 'User8' },
+		{ name: 'User9' },
+		{ name: 'User10' },
+		{ name: 'User11' },
+		{ name: 'User12' },
+		{ name: 'User13' },
+		{ name: 'User14' },
+		{ name: 'User15' },
+	]
+	let studentsHistory = [
+		{ name: 'User1' },
+		{ name: 'User16' },
+		{ name: 'User17' },
+		{ name: 'User18' },
+		{ name: 'User3' },
+		{ name: 'User20' },
+		{ name: 'User21' },
+		{ name: 'User6' },
+		{ name: 'User7' },
+		{ name: 'User8' },
+		{ name: 'User9' },
+		{ name: 'User22' },
+		{ name: 'User23' },
+	]
+	let mathStudents = new Set()
+	let historyStudents = new Set()
+
+	for (const student of studentsMath) {
+		mathStudents.add(student.name)
+	}
+
+	for (const student of studentsHistory) {
+		historyStudents.add(student.name)
+	}
+
+	// скільки студентів з гуртка з історії також відвідують гурток з математики
+	let intersection = new Set([...mathStudents].filter(student => historyStudents.has(student)))
+	console.log(`Скільки студентів з історії відвідують гурток математики: ${intersection.size}`)
+
+	// скільки всього студентів відвідують хоча б один гурток
+	let union = new Set([...mathStudents, ...historyStudents])
+	console.log(`Скільки всього студентів відвідують хоча б один гурто: ${union.size}`)
+
+	// Задача 11. Користувач може змінювати колір фону, що вибирає з використанням <input type="color">. Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом одного сеансу.
+
+	window.onload = function () {
+		let colorPicker = document.getElementById('colorPicker')
+		let colorChangeCount = 0
+
+		// Установка значення вибору кольору на попередньо збережений колір
+		let savedColor = localStorage.getItem('selectedColor')
+		if (savedColor) {
+			colorPicker.value = savedColor
+		}
+
+		// Перевірка, чи розпочат сеанс
+		let sessionStarted = localStorage.getItem('sessionStarted') === 'true'
+
+		// Новий сеанс, якщо він ще не почався
+		if (!sessionStarted) {
+			localStorage.setItem('sessionStarted', 'true')
+			localStorage.removeItem('colorChangeCount')
+		} else {
+			// Отримуємо кількість змін кольору, якщо сеанс уже розпочато
+			colorChangeCount = parseInt(localStorage.getItem('colorChangeCount') || 0)
+		}
+
+		//Оновлюємо кількість змін кольору та зберігаємо вибраний колір після зміни
+		colorPicker.addEventListener('change', function () {
+			colorChangeCount++
+			localStorage.setItem('colorChangeCount', colorChangeCount)
+			localStorage.setItem('selectedColor', colorPicker.value)
+
+			console.log('Обраний колір:', colorPicker.value)
+			console.log('Кількість змін кольору:', colorChangeCount)
+		})
+	}
+
+	// Задача 12. Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage). Періодично випадковим чином вибирати якусь	з справ і виводити користувачу (з використанням confirm). Якщо користувач натискає на «Ок», то видаляти цю задачу.
+
+	// Ініціалізація  to-do списка
+	let todoList = localStorage.getItem('todoList')
+	if (todoList) {
+		todoList = JSON.parse(todoList)
+	} else {
+		todoList = [
+			'Buy milk',
+			'Buy eggs',
+			'Buy bread',
+			'Buy cheese',
+			'Buy meat',
+		]
+	}
+
+	// Функція збереження to-do списку у localStorage
+	function saveTodoList() {
+		localStorage.setItem('todoList', JSON.stringify(todoList))
+	}
+
+	// Функція рандомного вибору та виводу користувачу
+	function selectRandomTask() {
+		if (todoList.length === 0) {
+			console.log('No tasks remaining.')
+			// Зупинка інтервалу
+			clearInterval(taskInterval)
+			return
+		}
+
+		let randomIndex = Math.floor(Math.random() * todoList.length)
+		let task = todoList[randomIndex]
+
+		let confirmResult = confirm(`Do you want to do the task: "${task}"?`)
+
+		if (confirmResult) {
+			// Видалення задачі зі списку
+			todoList.splice(randomIndex, 1)
+			saveTodoList();
+			console.log(`Task "${task}" completed and removed from the list.`)
+		} else {
+			console.log(`Task "${task}" not completed.`)
+		}
+	}
+	let interval = 3000
+	let taskInterval = setInterval(selectRandomTask, interval)
+
+</script>
+
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__items">
+						<label for="colorPicker">Віберіть колір</label>
+						<input type="color" id="colorPicker">
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+</body>
+
+</html>
