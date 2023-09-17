@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-1</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--Задача. 
+		
+	 ================================================== -->
+</head>
+<script>
+	// Задача 1. Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі номера виводиться оператор (050….  MTC, 096…  Kyivstar, ….).
+	class PhoneNumber {
+		constructor(number) {
+			this.number = number
+		}
+	}
+
+	function getOperator(phoneNumber) {
+		return new Promise((resolve, reject) => {
+			if (phoneNumber.startsWith("050") || phoneNumber.startsWith("066") || phoneNumber.startsWith("095")) {
+				resolve("MTC")
+			} else if (phoneNumber.startsWith("067") || phoneNumber.startsWith("096") || phoneNumber.startsWith("097")) {
+				resolve("Kyivstar")
+			} else if (phoneNumber.startsWith("063") || phoneNumber.startsWith("093")) {
+				resolve("Lifecell")
+			} else {
+				reject("Unknown operator")
+			}
+		})
+	}
+
+	function phoneNumberToString(phoneNumber) {
+		return new Promise((resolve, reject) => {
+			getOperator(phoneNumber)
+				.then(operator => resolve(`${phoneNumber} (${operator})`))
+				.catch(error => reject(error))
+		})
+	}
+
+	// Вводимо значення
+	const phoneNumberInput = prompt("Enter a phone number:")
+	const phoneNumber = new PhoneNumber(phoneNumberInput)
+	// Виводимо результат
+	phoneNumberToString(phoneNumber.number)
+		.then(stringRepresentation => console.log(stringRepresentation))
+		.catch(error => console.error(error))
+
+
+
+</script>
+
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__items">
+
+
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+</body>
+
+</html>

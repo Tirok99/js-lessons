@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task-2</title>
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--Задача. 
+		
+	 ================================================== -->
+</head>
+<script>
+	// Задача 2. Дано Shop -- клас, що містить список товарів (масив об’єктів класу Product (назва,	ціна, кількість одиниць). Додати можливість ітератора		до класу Shop, щоб при ітеруванні для кожного елемента виводився рядок «товар-загальна вартість»).
+	class Product {
+		constructor(name, price, quantity) {
+			this.name = name
+			this.price = price
+			this.quantity = quantity
+		}
+	}
+
+	class Shop {
+		constructor() {
+			this.products = []
+		}
+
+		addProduct(product) {
+			this.products.push(product)
+		}
+
+		[Symbol.iterator]() {
+			let currentIndex = 0
+
+			return {
+				next: () => {
+					if (currentIndex < this.products.length) {
+						const product = this.products[currentIndex]
+						const totalCost = product.price * product.quantity
+						currentIndex++
+						return { value: `${product.name}-${totalCost}`, done: false }
+					} else {
+						return { done: true }
+					}
+				}
+			}
+		}
+	}
+
+	const shop = new Shop()
+
+	const product1 = new Product("Product1", 420, 7)
+	const product2 = new Product("Product2", 1152, 13)
+	const product3 = new Product("Product3", 78, 115)
+
+	shop.addProduct(product1)
+	shop.addProduct(product2)
+	shop.addProduct(product3)
+
+	for (const productCost of shop) {
+		console.log(productCost)
+	}
+
+
+</script>
+
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			<div class="main__container">
+				<div class="main__application-block block-application">
+					<div class="block-application__items">
+
+
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	</div>
+
+	<div class="block-task__button">
+		<a href="./index.html" class="block-task__link block-task__link_padding">Повернутися</a>
+	</div>
+
+</body>
+
+</html>
